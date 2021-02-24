@@ -9,7 +9,7 @@
 <body>
 <div class="container-fluid">
     <div class="row no-gutter">
-        <div class="d-none d-md-flex col-md-4 col-lg-6"> <img src=""></div>
+        <div class="d-none d-md-flex col-md-4 col-lg-6 " id="fondo1"> </div>
         <div class="col-md-8 col-lg-6">
             <div class="login d-flex align-items-center py-5">
                 <div class="container">
@@ -33,7 +33,7 @@
                                 </div>
 
 
-                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase col-12  align-self-center font-weight-bold mb-2" type="submit">Sign in</button>
+                                <button class="btn btn-lg btn-dark btn-block btn-login text-uppercase col-12  align-self-center font-weight-bold mb-2" type="submit">Sign in</button>
                                 <div class="text-center">
                                     <a class="small" href="#">Forgot password?</a></div>
                             </form>

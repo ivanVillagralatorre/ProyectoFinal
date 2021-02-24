@@ -86,6 +86,11 @@
     color: #777;
 }
 
+#fondo1 { background: url("../media/logo-fondo.png"),rgba(0,0,0,0.2);
+          background-repeat: no-repeat;
+          background-position: center;
+         background-size: contain}
+
 /* Fallback for Edge
 -------------------------------------------------- */
 
