@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-})->name('index');
+Route::get('/',"LoginView@index")->name('index');
 
 Auth::routes();
 
