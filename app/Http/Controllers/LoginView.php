@@ -14,7 +14,7 @@ class LoginView extends Controller
     {
        if (empty(Auth::user()))
            {
-               return view('auth.login');
+               return view('auth.layoutlogin');
            }
 
         Auth::logout();

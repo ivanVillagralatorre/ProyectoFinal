@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    $('#alert').hide();
 });
 function validarLogin() {
     var password = $('#inputPassword').val();

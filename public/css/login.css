@@ -97,6 +97,8 @@ h3{font-weight:bold}
 
 #b-login1:hover{background-color: gray;}
 
+#alert{display: none;}
+
 
 @media (max-width: 765px) {
     body{background: rgba(0,0,0,0.1);}

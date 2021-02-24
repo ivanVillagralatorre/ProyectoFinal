@@ -16,10 +16,10 @@ trait AuthenticatesUsers
      *
      * @return \Illuminate\View\View
      */
-    public function showLoginForm()
+   /* public function showLoginForm()
     {
         return view('auth.login');
-    }
+    */
 
     /**
      * Handle a login request to the application.

@@ -1,8 +1,8 @@
-@extends('auth.login')
+@extends('auth.passwords.layoutemail')
 
 @section('content')
 
-
+    <body>
     <div class="container-fluid">
         <div class="row no-gutter">
             <div class="d-none d-md-flex col-md-4 col-lg-6 " id="fondo1" ><a href="/"></a> </div>
@@ -47,6 +47,5 @@
             </div>
         </div>
     </div>
-
-
+    </body>
 @endsection
