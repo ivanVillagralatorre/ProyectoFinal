@@ -89,7 +89,9 @@
 #fondo1 { background: url("../media/imagen1.png"),rgba(0,0,0,0.1);
           background-repeat: no-repeat;
           background-position: center;
-          background-size:contain;}
+          background-size:contain;
+}
+
 
 h3{font-weight:bold}
 

@@ -7,7 +7,7 @@ function validarLogin():boolean{
     let pattern : RegExp = new RegExp('^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,16}$');
 
     if (pattern.test(<string>password)){
-        
+
         return true
     }else {
 
