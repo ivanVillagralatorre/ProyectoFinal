@@ -86,13 +86,21 @@
     color: #777;
 }
 
-#fondo1 { background: url("../media/logo-fondo.png"),rgba(0,0,0,0.2);
+#fondo1 { background: url("../media/imagen1.png"),rgba(0,0,0,0.1);
           background-repeat: no-repeat;
           background-position: center;
-         background-size: contain}
+          background-size:contain;}
 
-/* Fallback for Edge
--------------------------------------------------- */
+h3{font-weight:bold}
+
+#b-login1:hover{background-color: gray;}
+
+
+@media (max-width: 765px) {
+    body{background: rgba(0,0,0,0.1);}
+    img{width: 45%;}
+
+}
 
 @supports (-ms-ime-align: auto) {
     .form-label-group>label {
@@ -103,8 +111,6 @@
     }
 }
 
-/* Fallback for IE
--------------------------------------------------- */
 
 @media all and (-ms-high-contrast: none),
 (-ms-high-contrast: active) {
@@ -115,3 +121,4 @@
         color: #777;
     }
 }
+
