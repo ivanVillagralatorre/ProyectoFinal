@@ -1,73 +1,52 @@
-@extends('layouts.app')
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/login.css" type="text/css">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto  ">
+                            <h3 class="login-heading mb-4">Welcome back!</h3>
+                            <form class="d-flex flex-column " method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <div class="form-label-group">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                                    <input id="inputEmail" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder=" introduce tu Email">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
+                                    <label for="inputEmail">introduce tu Email</label>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+                                <div class="form-label-group ">
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
+                                    <input id="inputPassword" type="password" class="form-control" name="password" required autocomplete="current-password" autofocus placeholder=" introduce tu contraseña">
+
+                                    <label for="inputPassword">Password</label>
+                                </div>
+
+
+                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase col-12  align-self-center font-weight-bold mb-2" type="submit">Sign in</button>
+                                <div class="text-center">
+                                    <a class="small" href="#">Forgot password?</a></div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script></body>
+
+
+</html>
