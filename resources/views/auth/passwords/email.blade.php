@@ -1,4 +1,4 @@
-@extends('auth.passwords.layoutemail')
+@extends('layouts.authLayout')
 
 @section('content')
 
