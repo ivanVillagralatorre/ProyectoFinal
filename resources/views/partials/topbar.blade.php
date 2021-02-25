@@ -16,7 +16,6 @@
 </nav>
 
 <!--PERFIL-->
-<!--IMPORTANTE!!: Es necesario cargar un objeto $usuario para que el formulario se cargue correctamente.-->
 
 <div>
 
@@ -31,7 +30,7 @@
                     </button>
                 </div>
 
-                <form method="post" action="{{route("editarUsuario")}}">
+                <form id="formUsuario" method="post" action="{{route("editarUsuario")}}">
                     @csrf
 
                     <div class="modal-body">
@@ -59,7 +58,7 @@
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="document.location.href = '/'">Cerrar sesión</button>
-                        <input type="submit" value="Editar" class="btn btn-dark" data-dismiss="modal">
+                        <input type="submit" value="Editar" class="btn btn-dark">
                     </div>
                 </form>
 
