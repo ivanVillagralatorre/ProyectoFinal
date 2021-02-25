@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',"LoginView@index")->name('index');
 
+//RUTAS DE REGISTRO,LOGIN Y RESET
 Auth::routes();
 
 Route::view("/home", "home");
 Route::view("/layout", "layout");
+
