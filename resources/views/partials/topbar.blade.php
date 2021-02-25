@@ -30,33 +30,36 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form>
+
+                <form method="post" action="{{route("editarUsuario")}}">
+                    @csrf
+
                     <div class="modal-body">
 
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Nombre</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" value="{{Auth::user()["nombre"]}}" disabled>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre" value="{{Auth::user()["nombre"]}}" disabled>
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Apellidos</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" value="{{Auth::user()["apellidos"]}}" disabled>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" name="apellidos" value="{{Auth::user()["apellidos"]}}" disabled>
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Email</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" value="{{Auth::user()["email"]}}" disabled>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" name="email" value="{{Auth::user()["email"]}}" disabled>
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleFormControlInput1">Contraseña</label>
-                                <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="*********" disabled>
+                                <input type="password" class="form-control" id="exampleFormControlInput1" name="password" placeholder="*********" disabled>
                             </div>
 
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="document.location.href = '/'">Cerrar sesión</button>
-                        <button type="button" class="btn btn-dark" data-dismiss="modal">Editar</button>
+                        <input type="submit" value="Editar" class="btn btn-dark" data-dismiss="modal">
                     </div>
                 </form>
 
