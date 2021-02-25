@@ -15,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',"LoginView@index")->name('index');
 
+
+Route::get('/pass/reset',function (){return view('auth.passwords.em');})->name('pass/resset');
+
+
+
 //RUTAS DE REGISTRO,LOGIN Y RESET
+
 Auth::routes();
 
 Route::view("/layout", "layout");
