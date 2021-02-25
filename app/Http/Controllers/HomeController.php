@@ -26,6 +26,8 @@ class HomeController extends Controller
     {
 
 
-        return Auth::User();
+
+    return view('home');
+
     }
 }

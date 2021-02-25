@@ -15,10 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',"LoginView@index")->name('index');
 
+
 Route::get('/pass/reset',function (){return view('auth.passwords.em');})->name('pass/resset');
 
 
 
+//RUTAS DE REGISTRO,LOGIN Y RESET
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::view("/layout", "layout");
+
+//PROYECTOS
+Route::get("/home", "ProyectoController@index")->name("home");
+Route::post("/insertarProyecto", "ProyectoController@store")->name("insertarProyecto");
+
