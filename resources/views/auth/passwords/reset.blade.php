@@ -13,7 +13,7 @@
                             <div class="col-md-9 col-lg-8 mx-auto d-flex flex-column  ">
                                 <img src="/media/Solo_dibujo.png " class="d-block d-md-none  align-self-center mb-5">
                                 <h3 class="login-heading mb-4 text-center">Introduce tu nueva contraseña</h3>
-                                <form method="POST" action="{{ route('password.update') }}">
+                                <form method="POST" action="{{ route('password.update') }}" onsubmit="return validarLogin()">
                                     @csrf
 
                                     <input type="hidden" name="token" value="{{ $token }}">
