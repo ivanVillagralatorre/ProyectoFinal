@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Proyecto;
-
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class ProyectoController extends Controller
+class usuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,16 +14,7 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        $usuario = Auth::user();
-
-        if($usuario == null){
-            return redirect("/");
-        }
-
-        $listaProyectos = Proyecto::get()->where("usuario_id", $usuario["id"]);
-
-        //"usuario" => $usuario
-        return view("home", ["listaProyectos" => $listaProyectos, "x" => 1]);
+        //
     }
 
     /**
@@ -46,20 +33,9 @@ class ProyectoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-
-        $usuario = Auth::user();
-
-        $proyecto = new Proyecto([
-            "titulo" => request("titulo"),
-            "descripcion" => request("descripcion"),
-            "usuario_id" => $usuario["id"]
-        ]);
-
-        $proyecto->save();
-
-        return redirect()->route("home");
+        //
     }
 
     /**
