@@ -20,6 +20,10 @@ class ProyectoController extends Controller
     {
         $usuario = Auth::user();
 
+        if($usuario == null){
+            return redirect("/");
+        }
+
         $listaProyectos = Proyecto::get()->where("usuario_id", $usuario["id"]);
 
         //"usuario" => $usuario
