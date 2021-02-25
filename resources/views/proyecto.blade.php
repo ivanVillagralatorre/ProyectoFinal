@@ -101,7 +101,7 @@
         <div id="layoutSidenav_content">
             <main class= " container-fluid bg-light p-4  ">
                 <div class="row d-flex flex-colum " >
-                <div class=" col-12 col-md-4 order-0 order-md-1 bg-dark h-auto d-flex h-50 flex-column rounded order-0 order-md-1 align-items-center">
+                <div class=" col-12 col-md-4 order-0 mt-md-4  order-md-1 bg-dark h-auto d-flex h-50 flex-column rounded order-0 order-md-1 align-items-center">
 
 
                 <h1 class="mb-3">Titulo</h1>
