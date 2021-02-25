@@ -1,0 +1,22 @@
+body{
+    nav {
+        border-bottom: 1px solid lightgray;
+    }
+
+
+
+
+    ::placeholder {
+        color: black;
+        font-size: 1em;
+    }
+
+}
+
+#over {overflow-y: auto;
+        max-height: 40vh;}
+
+textarea{outline:0;
+        padding: 1px;
+        resize: none;}
+

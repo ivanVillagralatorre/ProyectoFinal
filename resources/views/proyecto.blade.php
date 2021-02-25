@@ -30,7 +30,7 @@
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <nav class="sb-sidenav accordion sb-sidenav-dark border-" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
@@ -99,11 +99,94 @@
             </nav>
         </div>
         <div id="layoutSidenav_content">
-            <main>
-                
+            <main class= " container-fluid bg-light p-4  ">
+                <div class="row d-flex flex-colum " >
+                <div class=" col-12 col-md-4 order-0 order-md-1 bg-dark h-auto d-flex h-50 flex-column rounded order-0 order-md-1 align-items-center">
+
+
+                <h1 class="mb-3">Titulo</h1>
+
+                <div class="col-10 col-md-4 bg-light rounded-0">
+                    <h2 class="align-self-start">Descripcion:</h2>
+
+                </div>
+                    <div class="d-flex justify-content-center ">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-danger mt-4 mb-3" data-toggle="modal" data-target="#myModal">
+                            Añadir Participantes
+                        </button>
+                        <!-- Modal -->
+
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Modal Header</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Some text in the modal.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div  id='over'class="bg-light col-12 col-md-8 order-1 order-md-0 p-2 border border-4 rounded   mt-4 d-flex flex-column align-items-center  ">
+
+
+
+                      <div>a</div>
+                      <div>a</div>
+
+                      <div>a</div>
+
+                      <div>a</div>
+                      <div>a</div>
+                      <div>a</div>
+                      <div>a</div>
+                      <div>a</div>
+                      <div>a</div>
+                      <div>a</div>
+                      <div>a</div>
+                      <div>a</div>
+                      <div>a</div>
+                      <div>a</div>
+                      <div>a</div>
+                    <div>a</div>
+                    <div>a</div>
+                    <div>a</div>
+                    <div>a</div>
+                    <div>a</div>
+
+
+
+                </div>
+
+                    <div class="col-12 col-md-8 bg-secondary rounded order-2 ">
+
+
+                    <form class=>
+                        <div class=" row d-flex flex-column  ">
+                            <textarea  placeholder="Escribe tu mensaje"  class="rounded align-self-center mb-3 mt-4 overflow-hidden col-10 col-md-10  "></textarea >
+                            <button type="button" class="btn btn-lg col-10 align-self-center btn-dark">Enviar mensaje</button>
+                        </div>
+
+
+                    </form>
+                    </div>
+                </div>
 
             </main>
-            <footer class="py-4 bg-light mt-auto">
+            <footer class="py-4 bg-light mt-auto order-4 ">
                 <div class="container-fluid">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; Your Website 2020</div>
