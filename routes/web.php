@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',"LoginView@index")->name('index');
 
-Route::get('/pass/reset',function (){return view('auth.passwords.em');})->name('pass/resset');
 
+Route::get('/pass/reset',function (){return view('auth.passwords.em');})->name('pass/resset');
 
 
 //RUTAS DE REGISTRO,LOGIN Y RESET
@@ -32,4 +32,4 @@ Route::post("/editarUsuario", "UsuarioController@update")->name("editarUsuario")
 Route::get("/home", "ProyectoController@index")->name("home");
 Route::post("/insertarProyecto", "ProyectoController@store")->name("insertarProyecto");
 Route::post("/proyecto", "ProyectoController@show")->name("abrirProyecto");
-
+Route::post('/proyecto/mensaje','ProyectoController@show')->name('cr');
