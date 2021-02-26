@@ -5,7 +5,7 @@
 
 
 <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{route("home")}}">
         <img style="max-height: 40px" src="images/logo.png">
     </a>
 
