@@ -46,7 +46,6 @@
                             </div>
                         </form>
 
-
                     </div>
                 </div>
             </div>
@@ -64,16 +63,24 @@
                     <th scope="col">#</th>
                     <th scope="col">Título</th>
                     <th scope="col">Fecha de creación</th>
+                    <th scope="col">¿Continuar?</th>
                 </tr>
                 </thead>
                 <tbody>
 
                 @foreach($listaProyectos as $proyecto)
-                    <tr>
-                        <th scope="row">{{$x++}}</th>
-                        <td>{{$proyecto->titulo}}</td>
-                        <td>{{$proyecto->created_at}}</td>
-                    </tr>
+
+                    <form method="post" action="{{route('abrirProyecto')}}">
+                        @csrf
+                        <tr>
+                            <input type="hidden" name="idProyecto" value="{{$proyecto->id}}">
+                            <th scope="row">{{$x++}}</th>
+                            <td>{{$proyecto->titulo}}</td>
+                            <td>{{$proyecto->created_at}}</td>
+                            <td><input type="submit" class="btn btn-dark" value="Acceder"></td>
+                        </tr>
+                    </form>
+
                 @endforeach
 
                 </tbody>

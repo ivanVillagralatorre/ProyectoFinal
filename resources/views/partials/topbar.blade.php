@@ -29,34 +29,39 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form>
 
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Nombre</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre" disabled>
-                        </div>
+                <form id="formUsuario" method="post" action="{{route("editarUsuario")}}">
+                    @csrf
 
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Apellidos</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Apellido" disabled>
-                        </div>
+                    <div class="modal-body">
 
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Email</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" disabled>
-                        </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Nombre</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre" value="{{Auth::user()["nombre"]}}" disabled>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="*******" disabled>
-                        </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Apellidos</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" name="apellidos" value="{{Auth::user()["apellidos"]}}" disabled>
+                            </div>
 
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Editar</button>
-                </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Email</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" name="email" value="{{Auth::user()["email"]}}" disabled>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Contraseña</label>
+                                <input type="password" class="form-control" id="exampleFormControlInput1" name="password" placeholder="*********" disabled>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="document.location.href = '/'">Cerrar sesión</button>
+                        <input type="submit" value="Editar" class="btn btn-dark">
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
