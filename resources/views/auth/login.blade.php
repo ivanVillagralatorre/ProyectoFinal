@@ -32,7 +32,7 @@
 
                                     <button class="btn btn-lg btn-dark btn-block btn-login text-uppercase col-12  align-self-center font-weight-bold mb-2" id="b-login1" type="submit">Sign in</button>
                                     <div class="text-center">
-                                        <a class="small" href="/password/reset">¿Olvidaste tu contrsaeña?</a>|<a href="">Registrate</a></div>
+                                        <a class="small" href="/password/reset">¿Olvidaste tu contrsaeña?</a>|<a href="/register">Registrate</a></div>
 
                                 </form>
                                 <div id='alert' class="alert   alert-danger alert-dismissible fade show mt-3" role="alert">
