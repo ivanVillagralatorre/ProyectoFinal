@@ -11,8 +11,8 @@ class UsuariosProyectosController extends Controller
 
     public function index()
     {
-        $usuarios = User::get();
-        return view("usuariosProyectos");
+        $listaUsuarios = User::get();
+        return view("usuariosProyectos", ["listaUsuarios" => $listaUsuarios, "x" => 1]);
     }
 
     public function create()
