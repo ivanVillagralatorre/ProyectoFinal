@@ -22,6 +22,10 @@ body{
 
     #over2{height: 80%;}
     #over2+div{height: 20%;}
+
+    #descripcion{height:30%;}
+    #over{height: 60%;
+    }
 }
 
 @media (min-width:768px) {
@@ -29,7 +33,9 @@ body{
     #descripcion{width:30%;}
     #over{width: 70%;
     }
-
+    #descripcion{height:100% !important;}
+    #over{height: 100% !important;
+    }
 
 }
 

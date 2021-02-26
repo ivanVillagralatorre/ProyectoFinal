@@ -17,6 +17,12 @@ body #over2 {
 body #over2 + div {
   height: 20%;
 }
+body #descripcion {
+  height: 30%;
+}
+body #over {
+  height: 60%;
+}
 
 @media (min-width: 768px) {
   #descripcion {
@@ -25,6 +31,14 @@ body #over2 + div {
 
   #over {
     width: 70%;
+  }
+
+  #descripcion {
+    height: 100% !important;
+  }
+
+  #over {
+    height: 100% !important;
   }
 }
 

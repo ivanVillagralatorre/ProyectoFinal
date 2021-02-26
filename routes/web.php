@@ -32,4 +32,4 @@ Route::post("/editarUsuario", "UsuarioController@update")->name("editarUsuario")
 Route::get("/home", "ProyectoController@index")->name("home");
 Route::post("/insertarProyecto", "ProyectoController@store")->name("insertarProyecto");
 Route::post("/proyecto", "ProyectoController@show")->name("abrirProyecto");
-Route::post('/proyecto/mensaje','ProyectoController@show')->name('cr');
+Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Mensaje;
 use App\Models\Proyecto;
 
 use App\Models\User;
@@ -69,9 +70,26 @@ class ProyectoController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function show()
-    {
+    {   $idUsuario = Auth::user('id');
+
         $proyecto = Proyecto::get()->where("id", request("idProyecto"))->first();
-        return view('proyecto')->with('proyecto',$proyecto);
+        $mensajes = Mensaje::where('proyecto-id',$proyecto->id);
+
+        foreach ($mensajes as $mensaje){
+
+            $solicitante = User::get()->where('id',$idUsuario)->first();
+
+            $datosAutor = [
+                "nombre" => $solicitante->nombre." ".$solicitante->apellidos,
+                "email" => $solicitante->email,
+                "telefono" => $solicitante->telefono
+            ];
+            $mensaje->datosAutor = $datosAutor;
+
+        }
+
+
+        return view('proyecto')->with('proyecto',$proyecto)->with('mensajes',$mensajes);
 
     }
 
@@ -107,5 +125,21 @@ class ProyectoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function crearComentario(){
+        $id = Auth::user()->id;
+        $idp = \request('idP');
+
+        Mensaje::Create([
+            'texto'=>\request('mensaje'),
+            'usuario_id'=>$id,
+            'proyecto_id'=>$idp
+        ]);
+
+
+     $this.$this->show();
+
+
     }
 }
