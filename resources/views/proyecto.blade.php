@@ -2,6 +2,7 @@
 
 
 
+
 @section('content')
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="index.html">Start Bootstrap</a>
@@ -117,7 +118,7 @@
                 <div id="descripcion"class="  order-0 mt-md-4 flow-md-grow-5  order-md-1 bg-dark  d-flex  flex-column rounded order-0 order-md-1 align-items-center">
 
 
-                    <h1 class="mb-3">Titulo</h1>
+                    <h1 class="mb-3 text-light">{{$proyecto->titulo}}</h1>
 
                     <div class="bg-light rounded-0 ">
                         <h2 class="align-self-start">Descripcion:</h2>
@@ -155,9 +156,9 @@
                 </div>
 
 
-                <div id='over' class="bg-light order-1 order-md-0 p-2 border border-4 rounded   mt-4 d-flex flex-column   ">
+                <div id='over' class="bg-dark order-1 order-md-0 p-2 border border-4 rounded   mt-4 d-flex flex-column   ">
 
-                    <div id="over2" class="d-flex flex-column align-items-center overflow-auto border">
+                    <div id="over2" class="d-flex flex-column bg-light align-items-center overflow-auto border">
 
 
                         <div>a</div>
@@ -187,9 +188,10 @@
                     <div class=" bg-secondary rounded order-2 border  ">
 
 
-                        <form class="d-flex flex-column">
-                            <textarea placeholder="Escribe tu mensaje"
-                                      class="rounded align-self-center  mt-4 overflow-hidden "></textarea>
+                        <form class="d-flex flex-column"  method="post">
+                            @csrf
+                            <input type="hidden" value="{{$proyecto->id}}" name="idP">
+                            <textarea placeholder="Escribe tu mensaje"class="rounded align-self-center  mt-4 overflow-hidden "></textarea>
                             <button type="button" class="btn btn-lg mb-3 align-self-center btn-dark">Enviar
                                 mensaje
                             </button>
