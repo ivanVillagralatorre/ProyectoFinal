@@ -31,4 +31,5 @@ Route::post("/editarUsuario", "UsuarioController@update")->name("editarUsuario")
 //PROYECTOS
 Route::get("/home", "ProyectoController@index")->name("home");
 Route::post("/insertarProyecto", "ProyectoController@store")->name("insertarProyecto");
+Route::post("/proyecto", "ProyectoController@show")->name("abrirProyecto");
 
