@@ -5,16 +5,27 @@ body ::placeholder {
   color: black;
   font-size: 1em;
 }
-
-#over {
-  overflow-y: auto;
-  max-height: 40vh;
-}
-
-textarea {
+body textarea {
   outline: 0;
   padding: 1px;
+  width: 70%;
   resize: none;
+}
+body #over2 {
+  height: 80%;
+}
+body #over2 + div {
+  height: 20%;
+}
+
+@media (min-width: 768px) {
+  #descripcion {
+    width: 30%;
+  }
+
+  #over {
+    width: 70%;
+  }
 }
 
 /*# sourceMappingURL=proyectos.css.map */
