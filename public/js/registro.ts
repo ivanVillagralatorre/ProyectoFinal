@@ -15,9 +15,14 @@ $(document).ready(function (){
     }
 
 });
-/*function addEstiloError(campo,mensaje){
-
-}*/
+function addEstiloError(campo:JQuery,mensaje:string){
+    campo.addClass('is-invalid');
+    //añadir bloque de error hermano al input:
+    campo.after(
+        '<span class=\"invalid-feedback\" role=\"alert\">' +
+        '<strong>' + mensaje + '</strong>' +
+        '</span>');
+}
 function validarNombre(){
     let inputNombre:JQuery = $('#inputFirstName');
     let nombre :string = inputNombre.val().toString();
@@ -39,20 +44,10 @@ function validarNombre(){
     catch(err){
         error=true;
         if(err.message == 'nombre'){
-            inputNombre.addClass('is-invalid');
-            //añadir bloque de error hermano al input:
-            inputNombre.after(
-                '<span class=\"invalid-feedback\" role=\"alert\">' +
-                '<strong>' + errMessage + '</strong>' +
-                '</span>');
+           addEstiloError(inputNombre,errMessage);
         }
         else{
-            inputApellidos.addClass('is-invalid');
-            //añadir bloque de error hermano al input:
-            inputApellidos.after(
-                '<span class=\"invalid-feedback\" role=\"alert\">' +
-                '<strong>' + errMessage + '</strong>' +
-                '</span>');
+           addEstiloError(inputApellidos,errMessage);
         }
     }
 }
@@ -60,7 +55,8 @@ function validarPass(){
     let inputPass:JQuery = $('#inputPassword');
     let pass :string = inputPass.val().toString();
     let patron:RegExp = new RegExp('^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,16}$');
-    let errMessage:string = 'La contraseña debe tener entre 8-16 caracteres alfanuméricos, mínimo una mayúscula, una mínuscula y un número'
+    let errMessage:string = 'La contraseña debe tener entre 8-16 caracteres alfanuméricos,' +
+                            ' mínimo una mayúscula, una mínuscula y un número'
     try{
         if(pass!="")
             if(!patron.test(pass))
@@ -69,11 +65,6 @@ function validarPass(){
     }
     catch(err){
         error=true;
-        inputPass.addClass('is-invalid');
-        //añadir bloque de error hermano al input:
-        inputPass.after(
-            '<span class=\"invalid-feedback\" role=\"alert\">' +
-            '<strong>' + errMessage + '</strong>' +
-            '</span>');
+        addEstiloError(inputPass,errMessage);
     }
 }
