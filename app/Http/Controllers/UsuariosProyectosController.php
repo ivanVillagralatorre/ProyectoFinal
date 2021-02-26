@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsuariosProyectosController extends Controller
@@ -10,7 +11,8 @@ class UsuariosProyectosController extends Controller
 
     public function index()
     {
-        //
+        $usuarios = User::get();
+        return view("usuariosProyectos");
     }
 
     public function create()
