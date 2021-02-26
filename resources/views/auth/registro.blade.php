@@ -7,6 +7,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Registro</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+              integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+              crossorigin="anonymous">
         <link href="/css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -25,12 +28,14 @@
                                         <form method="POST" action="{{ route('register') }}">
                                             @csrf
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputNickname">Usuario</label>
-                                                <input class="form-control py-4 @error('name') is-invalid @enderror"
-                                                       id="inputNickname" type="text"
-                                                       placeholder="Teclea tu nombre de usuario"
-                                                       name="name" value="{{ old('name') }}"
-                                                       required autocomplete="name" autofocus/>
+                                                <div class="form-floating">
+                                                    <input class="form-control py-4 @error('name') is-invalid @enderror"
+                                                           id="inputNickname" type="text"
+                                                           placeholder="Teclea tu nombre de usuario"
+                                                           name="name" value="{{ old('name') }}"
+                                                           required autocomplete="name" autofocus/>
+                                                    <label class="small mb-1" for="inputNickname">Usuario</label>
+                                                </div>
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -38,13 +43,15 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4 @error('email') is-invalid @enderror"
-                                                       id="inputEmailAddress" type="email"
-                                                       aria-describedby="emailHelp"
-                                                       placeholder="Teclea tu dirección de correo electrónico"
-                                                       name="email" value="{{ old('email') }}"
-                                                       required autocomplete="email"/>
+                                                <div class="form-floating">
+                                                    <input class="form-control py-4 @error('email') is-invalid @enderror"
+                                                           id="inputEmailAddress" type="email"
+                                                           aria-describedby="emailHelp"
+                                                           placeholder="Teclea tu dirección de correo electrónico"
+                                                           name="email" value="{{ old('email') }}"
+                                                           required autocomplete="email"/>
+                                                    <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                                </div>
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -134,7 +141,9 @@
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+                crossorigin="anonymous"></script>
         <script src="/js/registro.js"></script>
     </body>
 </html>

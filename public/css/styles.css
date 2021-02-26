@@ -176,7 +176,7 @@ sup {
 }
 
 a {
-  color: #2b2f2e;
+  color: var(--primary);
   text-decoration: none;
   background-color: transparent;
 }
@@ -2674,12 +2674,12 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #2b2f2e;
-  border-color: #2b2f2e;
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
 .btn-primary:hover {
-  color: #2b2f2e;
+  color: var(--primary);
   background-color: #75a7a4;
   border-color: #aad2d2;
   font-weight: bolder;
@@ -2687,7 +2687,7 @@ fieldset:disabled a.btn {
 
 .btn-primary:focus,
 .btn-primary.focus {
-  color: #2b2f2e;
+  color: var(--primary);
   background-color: #75a7a4;
   border-color: #aad2d2;
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
@@ -2697,14 +2697,14 @@ fieldset:disabled a.btn {
 .btn-primary.disabled,
 .btn-primary:disabled {
   color: #fff;
-  background-color: #2b2f2e;
-  border-color: #2b2f2e;
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
 .btn-primary:not(:disabled):not(.disabled):active,
 .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
-  color: #2b2f2e;
+  color: var(--primary);
   background-color: #75a7a4;
   border-color: #aad2d2;
   font-weight: bolder;
@@ -3004,14 +3004,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-  color: #2b2f2e;
-  border-color: #2b2f2e;
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #2b2f2e;
-  border-color: #2b2f2e;
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
 .btn-outline-primary:focus,
@@ -3029,8 +3029,8 @@ fieldset:disabled a.btn {
 .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff;
-  background-color: #2b2f2e;
-  border-color: #2b2f2e;
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus,
@@ -6964,7 +6964,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #2b2f2e !important;
+  background-color: var(--primary) !important;
 }
 
 a.bg-primary:hover,
