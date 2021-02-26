@@ -71,6 +71,9 @@ class ProyectoController extends Controller
     public function show()
     {
         $proyecto = Proyecto::get()->where("id", request("idProyecto"))->first();
+
+        setcookie("idProyecto",request("idProyecto"),time()+31556926 ,'/');
+
         return view('proyecto')->with('proyecto',$proyecto);
 
     }

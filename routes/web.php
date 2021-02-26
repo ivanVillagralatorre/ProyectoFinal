@@ -33,3 +33,6 @@ Route::get("/home", "ProyectoController@index")->name("home");
 Route::post("/insertarProyecto", "ProyectoController@store")->name("insertarProyecto");
 Route::post("/proyecto", "ProyectoController@show")->name("abrirProyecto");
 Route::post('/proyecto/mensaje','ProyectoController@show')->name('cr');
+
+//UsuariosProyectos
+Route::get("/listaDeUsuarios", "usuariosProyectosController@index")->name("UsuariosProyectos");
