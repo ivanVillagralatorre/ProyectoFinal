@@ -72,13 +72,24 @@ class UsuarioController extends Controller
     public function update()
     {
         $usuario = Auth::user();
+        if(request("password") == null){
+            DB::table("users")->where("id", $usuario["id"])->update([
+                "NOMBRE" => request("nombre"),
+                "APELLIDOS" => request("apellidos"),
+                "EMAIL" => request("email"),
+            ]);
+        }else{
+            $pass = password_hash(request("password"), PASSWORD_DEFAULT);
 
-        DB::table(“users”)->where(“id”, $usuario["id"])->update([
-            “NOMBRE” => request("nombre"),
-            “APELLIDOS” => request("apellidos"),
-            “EMAIL” => request("email"),
-            “PASSWORD” => request("password")
-        ]);
+            DB::table("users")->where("id", $usuario["id"])->update([
+                "NOMBRE" => request("nombre"),
+                "APELLIDOS" => request("apellidos"),
+                "EMAIL" => request("email"),
+                "PASSWORD" => $pass
+            ]);
+        }
+
+        return redirect()->route("home");
 
     }
 
