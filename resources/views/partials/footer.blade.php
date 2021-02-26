@@ -5,5 +5,5 @@
         <label class="text-white bg-dark">Derechos reservados a siwo.inc</label>
     </div>
 
-        <img style="max-height: 50px" src="images/copy.png">
+        <img style="max-height: 50px" src="/images/copy.png">
 </footer>
