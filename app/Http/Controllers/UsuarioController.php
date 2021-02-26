@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Proyecto;
-
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class ProyectoController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,16 +16,7 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        $usuario = Auth::user();
-
-        if($usuario == null){
-            return redirect("/");
-        }
-
-        $listaProyectos = Proyecto::get()->where("usuario_id", $usuario["id"]);
-
-        //"usuario" => $usuario
-        return view("home", ["listaProyectos" => $listaProyectos, "x" => 1]);
+        //
     }
 
     /**
@@ -46,20 +35,9 @@ class ProyectoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-
-        $usuario = Auth::user();
-
-        $proyecto = new Proyecto([
-            "titulo" => request("titulo"),
-            "descripcion" => request("descripcion"),
-            "usuario_id" => $usuario["id"]
-        ]);
-
-        $proyecto->save();
-
-        return redirect()->route("home");
+        //
     }
 
     /**
@@ -68,9 +46,9 @@ class ProyectoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        return $proyecto = Proyecto::get()->where("id", request("idProyecto"));
+        //
     }
 
     /**
@@ -91,9 +69,28 @@ class ProyectoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
-        //
+        $usuario = Auth::user();
+        if(request("password") == null){
+            DB::table("users")->where("id", $usuario["id"])->update([
+                "NOMBRE" => request("nombre"),
+                "APELLIDOS" => request("apellidos"),
+                "EMAIL" => request("email"),
+            ]);
+        }else{
+            $pass = password_hash(request("password"), PASSWORD_DEFAULT);
+
+            DB::table("users")->where("id", $usuario["id"])->update([
+                "NOMBRE" => request("nombre"),
+                "APELLIDOS" => request("apellidos"),
+                "EMAIL" => request("email"),
+                "PASSWORD" => $pass
+            ]);
+        }
+
+        return redirect()->route("home");
+
     }
 
     /**

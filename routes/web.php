@@ -15,9 +15,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',"LoginView@index")->name('index');
 
+
+Route::get('/pass/reset',function (){return view('auth.passwords.em');})->name('pass/resset');
+
+//Rutas Proyecto
+Route::get('/proyecto',function (){
+    return view('proyecto');
+})->name('proyecto');
+
+
 //RUTAS DE REGISTRO,LOGIN Y RESET
+
 Auth::routes();
 
-Route::view("/home", "home");
 Route::view("/layout", "layout");
+
+//USUARIOS
+Route::post("/editarUsuario", "UsuarioController@update")->name("editarUsuario");
+
+//PROYECTOS
+Route::get("/home", "ProyectoController@index")->name("home");
+Route::post("/insertarProyecto", "ProyectoController@store")->name("insertarProyecto");
+Route::post("/proyecto", "ProyectoController@show")->name("abrirProyecto");
 
