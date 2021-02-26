@@ -10,8 +10,8 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@types/jquery": "^3.5.5",
         "axios": "^0.21",
-        "bootstrap": "^4.0.0",
         "jquery": "^3.2",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
@@ -22,5 +22,8 @@
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "bootstrap": "^4.6.0"
     }
 }
