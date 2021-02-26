@@ -12,16 +12,30 @@ body textarea {
   resize: none;
 }
 body #over2 {
+  background: #efe7dd url("https://cloud.githubusercontent.com/assets/398893/15136779/4e765036-1639-11e6-9201-67e728e86f39.jpg") repeat;
+  z-index: 0;
+}
+body #over2 {
   height: 80%;
 }
 body #over2 + div {
   height: 20%;
 }
+body #over2 span {
+  color: red;
+}
 body #descripcion {
   height: 30%;
 }
 body #over {
-  height: 60%;
+  height: 70%;
+}
+body #btn {
+  max-height: 52px;
+  height: 52px;
+}
+body form {
+  margin-block-end: 0;
 }
 
 @media (min-width: 768px) {
@@ -39,6 +53,15 @@ body #over {
 
   #over {
     height: 100% !important;
+    color: red;
+  }
+
+  #over2 {
+    height: 90% !important;
+  }
+
+  #over2 + div {
+    height: 10% !important;
   }
 }
 

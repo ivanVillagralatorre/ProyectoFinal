@@ -70,24 +70,25 @@ class ProyectoController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function show()
-    {   $idUsuario = Auth::user('id');
+    {   $idUsuario = Auth::user()->id;
+
 
         $proyecto = Proyecto::get()->where("id", request("idProyecto"))->first();
-        $mensajes = Mensaje::where('proyecto-id',$proyecto->id);
+        $mensajes = Mensaje::get()->where('proyecto_id',$proyecto->id);
 
-        foreach ($mensajes as $mensaje){
+      foreach ($mensajes as $mensaje){
 
-            $solicitante = User::get()->where('id',$idUsuario)->first();
+
+            $autor = User::get()->where('id',$mensaje->usuario_id)->first();
 
             $datosAutor = [
-                "nombre" => $solicitante->nombre." ".$solicitante->apellidos,
-                "email" => $solicitante->email,
-                "telefono" => $solicitante->telefono
+                "name" => $autor->name,
+                "id" => $autor->id,
+                "apellidos" => $autor->apellidos
             ];
             $mensaje->datosAutor = $datosAutor;
 
         }
-
 
         return view('proyecto')->with('proyecto',$proyecto)->with('mensajes',$mensajes);
 
@@ -138,7 +139,7 @@ class ProyectoController extends Controller
         ]);
 
 
-     $this.$this->show();
+        return \request();
 
 
     }
