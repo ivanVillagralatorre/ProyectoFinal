@@ -51,7 +51,7 @@
                         Inicio/Chat
                     </a>
 
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{route('multimedia')}}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-file-image"></i>
                         </div>

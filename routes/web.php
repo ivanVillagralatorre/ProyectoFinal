@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,4 +32,16 @@ Route::post("/editarUsuario", "UsuarioController@update")->name("editarUsuario")
 Route::get("/home", "ProyectoController@index")->name("home");
 Route::post("/insertarProyecto", "ProyectoController@store")->name("insertarProyecto");
 Route::post("/proyecto", "ProyectoController@show")->name("abrirProyecto");
+
+//MENSAJES
 Route::post('/proyecto/mensaje','ProyectoController@show')->name('cr');
+
+//ARCHIVOS
+Route::get('/archivos',function (){
+    return view('archivos');
+})->name('multimedia');
+
+Route::post('multimedia',function (){
+    request()->validate(['file'=>'']);
+    return request()->archivo->storeAs('public',request()->archivo->getClientOriginalName());
+})->name('multimedia.guardar');
