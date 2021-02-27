@@ -7,6 +7,7 @@ use App\Models\Mensaje;
 use App\Models\Proyecto;
 
 use App\Models\User;
+use App\Models\usuarios_proyectos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,6 +60,14 @@ class ProyectoController extends Controller
         ]);
 
         $proyecto->save();
+
+        $proyectoCreado = Proyecto::get()->where('titulo',request('titulo'))->where('usuario_id',$usuario["id"])->first();
+
+        usuarios_proyectos::Create([
+            'usuario_id'=>Auth::user()->id,
+            'proyecto_id'=>$proyectoCreado->id,
+        ]);
+
 
         return redirect()->route("home");
     }
