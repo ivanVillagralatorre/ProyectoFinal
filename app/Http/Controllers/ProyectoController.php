@@ -74,6 +74,8 @@ class ProyectoController extends Controller
 
 
         $proyecto = Proyecto::get()->where("id", request("idProyecto"))->first();
+        setcookie("idProyecto",request("idProyecto"),time()+31556926 ,'/');
+
         $mensajes = Mensaje::get()->where('proyecto_id',$proyecto->id);
         $autorProyecto = User::get()->where("id", $proyecto->usuario_id)->first();;
 
