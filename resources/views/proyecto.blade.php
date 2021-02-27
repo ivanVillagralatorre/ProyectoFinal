@@ -11,7 +11,7 @@
 
 
         <h1 class="mb-3 text-light">{{$proyecto->titulo}}</h1>
-        <span id="titulospan" class="mb-3 text-uppercase">informacion del proyecto</span>
+        <span id="titulospan" class="mb-3 text-light text-uppercase">informacion del proyecto</span>
 
         <button type="button" class="btn text-uppercase btnEnviar btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
             Informacion
@@ -79,7 +79,6 @@
                 @endif
 
             @empty
-                <h1>no hay mensajes</h1>
             @endforelse
 
 
@@ -94,7 +93,6 @@
                     <input type="hidden" value="{{$proyecto->id}}" name="idP">
                     <textarea name="mensaje" placeholder="Escribe tu mensaje"class="rounded    overflow-hidden "></textarea>
                     <button  id="btn" class="btn  btn-dark">Enviar
-                        mensaje
                     </button>
 
                 </div>

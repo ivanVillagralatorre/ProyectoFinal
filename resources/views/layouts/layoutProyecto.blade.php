@@ -11,18 +11,22 @@
 
 
 
-<nav class=" sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="">
+<nav class=" sb-topnav navbar navbar-expand navbar-dark bg-dark d-flex justify-content-between">
+    <a class="navbar-brand" href="/home">
         <img style="max-height: 40px" src="images/logo.png">
     </a>
 
-    <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
-    </button>
 
-        <a class="navbar-brand" href="#" data-toggle="modal" data-target="#perfil">
-        <img style="max-height: 40px" src="images/userDefault.png">
+    <div>
+
+
+        <a class="" href="#" data-toggle="modal" data-target="#perfil">
+            <img style="max-height: 40px" src="images/userDefault.png">
 
         </a>
+        <button class="btn  btn-link btn-sm " id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
+        </button>
+    </div>
 
 </nav>
 
