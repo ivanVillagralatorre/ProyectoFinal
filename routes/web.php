@@ -31,10 +31,14 @@ Route::post("/editarUsuario", "UsuarioController@update")->name("editarUsuario")
 //PROYECTOS
 Route::get("/home", "ProyectoController@index")->name("home");
 Route::post("/insertarProyecto", "ProyectoController@store")->name("insertarProyecto");
-Route::post("/proyecto", "ProyectoController@show")->name("abrirProyecto");
+Route::get("/proyecto/{id}", "ProyectoController@show")->name("abrirProyecto");
 
 //MENSAJES
-Route::post('/proyecto/mensaje','ProyectoController@show')->name('cr');
+Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
+
+//UsuariosProyectos
+Route::get("/listaDeUsuarios", "usuariosProyectosController@index")->name("UsuariosProyectos");
+
 
 //ARCHIVOS
 Route::get('/archivos',function (){
@@ -51,3 +55,4 @@ Route::post('multimedia',function (){
 Route::get('/public/{archivo}', function ($archivo){
     return Storage::download("planos/".$archivo);
 })->name('multimedia.descargar');
+

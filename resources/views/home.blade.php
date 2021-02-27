@@ -70,10 +70,10 @@
 
                 @foreach($listaProyectos as $proyecto)
 
-                    <form method="post" action="{{route('abrirProyecto')}}">
+                    <form method="get" action="{{route('abrirProyecto',$proyecto->id)}}">
                         @csrf
                         <tr>
-                            <input type="hidden" name="idProyecto" value="{{$proyecto->id}}">
+                            <input type="hidden" name="id" value="{{$proyecto->id}}">
                             <th scope="row">{{$x++}}</th>
                             <td>{{$proyecto->titulo}}</td>
                             <td>{{$proyecto->created_at}}</td>

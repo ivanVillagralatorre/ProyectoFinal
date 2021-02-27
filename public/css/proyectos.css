@@ -12,19 +12,72 @@ body textarea {
   resize: none;
 }
 body #over2 {
-  height: 80%;
+  background: #efe7dd url("https://cloud.githubusercontent.com/assets/398893/15136779/4e765036-1639-11e6-9201-67e728e86f39.jpg") repeat;
+  z-index: 0;
+}
+body #over2 {
+  height: 90%;
 }
 body #over2 + div {
-  height: 20%;
+  height: 10%;
+}
+body #over2 span {
+  color: red;
+}
+body #over {
+  height: 80%;
+}
+body #btn {
+  max-height: 52px;
+  height: 52px;
+}
+body form {
+  margin-block-end: 0;
+}
+body #titulospan {
+  font-size: 1em;
+}
+body #descripcion {
+  height: auto !important;
+}
+body #descripcion button {
+  height: 50px;
+  width: 50%;
 }
 
 @media (min-width: 768px) {
+  #descripcion button {
+    height: 80px !important;
+    width: 100% !important;
+  }
+
   #descripcion {
     width: 30%;
   }
 
   #over {
     width: 70%;
+  }
+
+  #descripcion {
+    height: 100% !important;
+  }
+
+  #over {
+    height: 100% !important;
+    color: red;
+  }
+
+  #datos {
+    overflow-y: hidden;
+  }
+
+  #over2 {
+    height: 90% !important;
+  }
+
+  #over2 + div {
+    height: 10% !important;
   }
 }
 
