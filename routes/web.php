@@ -45,3 +45,9 @@ Route::post('multimedia',function (){
     request()->validate(['file'=>'']);
     return request()->archivo->storeAs('public',request()->archivo->getClientOriginalName());
 })->name('multimedia.guardar');
+
+////DESCARGAR ARCHIVOS
+
+Route::get('/public/{archivo}', function ($archivo){
+    return Storage::download("planos/".$archivo);
+})->name('multimedia.descargar');
