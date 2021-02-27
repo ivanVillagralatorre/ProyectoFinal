@@ -92,7 +92,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Menú</div>
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{route('abrirProyecto',$_COOKIE['idProyecto'])}}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-comments"></i>
                         </div>
@@ -119,7 +119,7 @@
                         </div>
                         Estadísticas
                     </a>
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{route('mostrarTareas')}}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-briefcase"></i>
                         </div>

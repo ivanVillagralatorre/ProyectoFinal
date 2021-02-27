@@ -6,8 +6,7 @@
 @section('content')
 
 
-
-    <div id="descripcion" class=" p-2  order-0  flow-md-grow-5  order-md-1 bg-secondary  border d-flex  flex-column rounded order-0 order-md-1 align-items-center">
+   <div id="descripcion" class=" p-2  order-0  flow-md-grow-5  order-md-1 bg-secondary  border d-flex  flex-column rounded order-0 order-md-1 align-items-center">
 
 
         <h1 class="mb-3 text-light">{{$proyecto->titulo}}</h1>
