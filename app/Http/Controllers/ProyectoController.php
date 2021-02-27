@@ -75,6 +75,7 @@ class ProyectoController extends Controller
 
         $proyecto = Proyecto::get()->where("id", request("idProyecto"))->first();
         $mensajes = Mensaje::get()->where('proyecto_id',$proyecto->id);
+        $autorProyecto = User::get()->where("id", $proyecto->usuario_id)->first();;
 
       foreach ($mensajes as $mensaje){
 
@@ -90,7 +91,7 @@ class ProyectoController extends Controller
 
         }
 
-        return view('proyecto')->with('proyecto',$proyecto)->with('mensajes',$mensajes);
+        return view('proyecto')->with('proyecto',$proyecto)->with('mensajes',$mensajes)->with('aut',$autorProyecto);
 
     }
 
