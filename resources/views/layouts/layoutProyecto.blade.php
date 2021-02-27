@@ -21,7 +21,7 @@
     <div>
 
 
-        <a class="" href="#" data-toggle="modal" data-target="#perfil">
+        <a class="text-dark" href="#" data-toggle="modal" data-target="#perfil">
             <img style="max-height: 40px" src="/images/userDefault.png">
 
         </a>

@@ -1,8 +1,8 @@
 @extends('layouts.layoutProyecto')
 
 @section('content')
-  <main class="d-flex flex-column p-4 3">
-      <div class="mb-3">
+  <main class="d-flex flex-column p-4 w-100">
+      <div class="mb-3  d-flex justify-content-center">
           <button type="button" class="btn text-uppercase btnEnviar btn-dark" data-toggle="modal" data-target="#exampleModal">
               Crear Tarea
           </button>
@@ -15,16 +15,30 @@
                       </div>
                       <div class="modal-body">
                           <div class="sn-field ">
-                              <form>
+                              <form id="formTarea" method="post" action="{{route('crearTareas')}}">
+                              @csrf
+                              <div class="modal-body">
+                                  <!--FORMULARIO PARA LA CREACIÓN DE PROYECTOS-->
+                                  <div class="form-group">
+                                      <label for="exampleFormControlInput1">Título de la tarea</label>
+                                      <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Tarea1">
+                                  </div>
 
+                                  <div class="form-group">
+                                      <label for="exampleFormControlTextarea1">Descripción</label>
+                                      <textarea name="descripcion" class="form-control w-100" id="descripcion" rows="3"></textarea>
+                                  </div>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                  <input type="submit" class="btn btn-dark" value="Crear">
+                              </div>
                               </form>
 
 
 
                           </div>
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary text-uppercase" data-dismiss="modal">cerrar</button>
-                          </div>
+
                       </div>
 
                   </div>
@@ -34,46 +48,41 @@
 
       </div>
 
-      <div class="d-flex ">
-          <div class="accordion" id="accordionExample">
-              <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          Accordion Item #1
-                      </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                          <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                      </div>
+      <div  id="contenedorTareas" class="d-flex  flex-wrap w-100">
+          <div class="tarea border border-dark w-25 rounded p-2 m-md-4">
+              <div class="titulo-obra d-flex   justify-content-between " id="obra1" data-toggle="collapse" href="#obraCompleta1" aria-controls="obraCompleta1">
+                  <p><b>ID: 123123123</b></p>
+                  <div>
+                      <span><b>Estado:</b> <span>confirmada</span></span>
                   </div>
               </div>
-              <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingTwo">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          Accordion Item #2
-                      </button>
-                  </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                      </div>
-                  </div>
-              </div>
-              <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingThree">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                          Accordion Item #3
-                      </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                      </div>
+
+              <div id="obraCompleta1" class="collapse cuerpo-obra ">
+
+                  <div>
+                      <p><b>Descripción: </b>cosascosas</p>
                   </div>
               </div>
           </div>
 
+          <div class="tarea border border-dark  w-25  rounded p-2 m-md-4">
+              <div class="titulo-obra d-flex   justify-content-between " id="obra1" data-toggle="collapse" href="#obraCompleta1" aria-controls="obraCompleta1">
+                  <p><b>ID: 123123123</b></p>
+                  <div>
+                      <span><b>Estado:</b> <span>confirmada</span></span>
+                  </div>
+              </div>
+
+              <div id="obraCompleta1" class="collapse cuerpo-obra ">
+
+                  <div>
+                      <p><b>Descripción: </b>cosascosas</p>
+                  </div>
+              </div>
+          </div>
+
+
       </div>
+
   </main>
 @endsection

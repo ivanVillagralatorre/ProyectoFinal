@@ -14,4 +14,12 @@ class TareasController extends Controller
 
         return view('tareas');
     }
+
+
+    public function store()
+    {
+
+
+        return request();
+    }
 }
