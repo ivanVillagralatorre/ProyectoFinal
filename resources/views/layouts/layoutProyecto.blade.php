@@ -1,6 +1,6 @@
 <head>
     <link rel="icon" type="image/png" href="images/logo.png">
-    <link href="css/styles.css" rel="stylesheet"/>
+    <link href="/css/styles.css" rel="stylesheet"/>
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
           crossorigin="anonymous"/>
     <link type="text/css" rel="stylesheet" href="/css/proyectos.css">
@@ -14,7 +14,7 @@
 
 <nav class=" sb-topnav navbar navbar-expand navbar-dark bg-dark d-flex justify-content-between">
     <a class="navbar-brand" href="/home">
-        <img style="max-height: 40px" src="images/logo.png">
+        <img style="max-height: 40px" src="/images/logo.png">
     </a>
 
 
@@ -22,7 +22,7 @@
 
 
         <a class="" href="#" data-toggle="modal" data-target="#perfil">
-            <img style="max-height: 40px" src="images/userDefault.png">
+            <img style="max-height: 40px" src="/images/userDefault.png">
 
         </a>
         <button class="btn  btn-link btn-sm " id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
@@ -58,18 +58,18 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Apellidos</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" name="apellidos" value="{{Auth::user()["apellidos"]}}" disabled>
+                            <label for="exampleFormControlInput2">Apellidos</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput2" name="apellidos" value="{{Auth::user()["apellidos"]}}" disabled>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Email</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" name="email" value="{{Auth::user()["email"]}}" disabled>
+                            <label for="exampleFormControlInput3">Email</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput3" name="email" value="{{Auth::user()["email"]}}" disabled>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleFormControlInput1" name="password" placeholder="*********" disabled>
+                            <label for="exampleFormControlInput4">Contraseña</label>
+                            <input type="password" class="form-control" id="exampleFormControlInput4" name="password" placeholder="*********" disabled>
                         </div>
 
                     </div>
@@ -119,6 +119,13 @@
                         </div>
                         Estadísticas
                     </a>
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        Tareas
+                    </a>
+
 
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                          data-parent="#sidenavAccordion">
