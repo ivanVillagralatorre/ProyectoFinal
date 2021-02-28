@@ -13,7 +13,7 @@ class UsuariosProyectosController extends Controller
 
     public function index()
     {
-        $usuariosProyectos = usuarios_proyectos::get()->where("proyecto_id", $_COOKIE["idProyecto"]);
+        $usuariosProyectos = usuarios_proyectos::get()->where("proyecto_id", $_COOKIE["idProyecto"])->where("estado", 1);
 
         //Para acceder al propietario
         $proyecto = Proyecto::get()->where("id", $_COOKIE["idProyecto"])->first();
@@ -39,7 +39,8 @@ class UsuariosProyectosController extends Controller
 
         $usuarioProyecto = new usuarios_proyectos([
             "usuario_id" => $usuario->id,
-            "proyecto_id" => $_COOKIE["idProyecto"]
+            "proyecto_id" => $_COOKIE["idProyecto"],
+            "estado" => 0
             ]);
 
         $usuarioProyecto->save();

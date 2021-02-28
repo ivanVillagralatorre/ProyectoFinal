@@ -27,10 +27,12 @@ class ProyectoController extends Controller
         }
 
 
-        //$listaProyectos = Proyecto::get()->where("usuario_id", $usuario["id"]);
+        $peticionesPendientes = usuarios_proyectos::get()->where("usuario_id", $usuario->id)->where("estado", "0");
 
-        $usuariosProyectos = usuarios_proyectos::get()->where("usuario_id", $usuario->id);
+
+        $usuariosProyectos = usuarios_proyectos::get()->where("usuario_id", $usuario->id)->where("estado", "1");
         $listaProyectos = array();
+
 
         foreach ($usuariosProyectos as $usuarioProyecto){
             array_push($listaProyectos, Proyecto::get()->where("id", $usuarioProyecto->proyecto_id)->first());
@@ -38,7 +40,7 @@ class ProyectoController extends Controller
 
 
         //"usuario" => $usuario
-        return view("home", ["listaProyectos" => $listaProyectos, "x" => 1]);
+        return view("home", ["listaProyectos" => $listaProyectos, "x" => 1, "peticionesPendientes" => $peticionesPendientes]);
     }
 
     /**
@@ -75,6 +77,7 @@ class ProyectoController extends Controller
         usuarios_proyectos::Create([
             'usuario_id'=>Auth::user()->id,
             'proyecto_id'=>$proyectoCreado->id,
+            'estado' => 1,
         ]);
 
 
