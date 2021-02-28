@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,5 +37,26 @@ Route::get('/tareas','TareasController@index')->name('mostrarTareas');
 Route::post('/crearTareas','TareasController@store')->name('crearTareas');
 
 
+//MENSAJES
+Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
+
 //UsuariosProyectos
 Route::get("/listaDeUsuarios", "usuariosProyectosController@index")->name("UsuariosProyectos");
+
+
+//ARCHIVOS
+Route::get('/archivos',function (){
+    return view('archivos');
+})->name('multimedia');
+
+Route::post('multimedia',function (){
+    request()->validate(['file'=>'']);
+    return request()->archivo->storeAs('public',request()->archivo->getClientOriginalName());
+})->name('multimedia.guardar');
+
+////DESCARGAR ARCHIVOS
+
+Route::get('/public/{archivo}', function ($archivo){
+    return Storage::download("planos/".$archivo);
+})->name('multimedia.descargar');
+
