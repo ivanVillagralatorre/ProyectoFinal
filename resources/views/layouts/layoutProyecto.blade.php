@@ -109,7 +109,7 @@
                         Archivos
                     </a>
 
-                    <a class="nav-link" href="{{route("UsuariosProyectos")}}">
+                    <a class="nav-link" href="{{route('mostrarTareas')}}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-users-cog"></i>
                         </div>

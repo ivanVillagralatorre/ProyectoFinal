@@ -17,6 +17,7 @@
                           <div class="sn-field ">
                               <form id="formTarea" method="post" action="{{route('crearTareas')}}">
                               @csrf
+                                  <input type="hidden" name="idP" value="{{$_COOKIE['idProyecto']}}">
                               <div class="modal-body">
                                   <!--FORMULARIO PARA LA CREACIÓN DE PROYECTOS-->
                                   <div class="form-group">
