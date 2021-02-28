@@ -32,6 +32,10 @@ Route::post("/editarUsuario", "UsuarioController@update")->name("editarUsuario")
 Route::get("/home", "ProyectoController@index")->name("home");
 Route::post("/insertarProyecto", "ProyectoController@store")->name("insertarProyecto");
 Route::get("/proyecto/{id}", "ProyectoController@show")->name("abrirProyecto");
+Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
+Route::get('/tareas','TareasController@index')->name('mostrarTareas');
+Route::post('/tareas','TareasController@store')->name('crearTareas');
+
 
 //MENSAJES
 Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
