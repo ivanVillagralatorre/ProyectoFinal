@@ -42,6 +42,7 @@ Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComent
 
 //UsuariosProyectos
 Route::get("/listaDeUsuarios", "usuariosProyectosController@index")->name("UsuariosProyectos");
+Route::post("/AnadirUsuarioProyecto", "usuariosProyectosController@store")->name("AnadirUsuarioProyecto");
 
 
 //ARCHIVOS

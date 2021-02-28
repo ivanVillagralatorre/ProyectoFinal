@@ -17,7 +17,7 @@ class UsuariosProyectosController extends Controller
         $listaUsuarios = array();
 
         foreach ($usuariosProyectos as $usuarioProyecto){
-            array_push($listaUsuarios, User::get()->where("id", $usuarioProyecto->usuario_id));
+            array_push($listaUsuarios, User::get()->where("id", $usuarioProyecto->usuario_id)->first());
         }
 
         return view("usuariosProyectos", ["listaUsuarios" => $listaUsuarios, "x" => 1]);
@@ -28,9 +28,19 @@ class UsuariosProyectosController extends Controller
         //
     }
 
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $usuario = User::get()->where("email", request("email"))->first();
+
+        $usuarioProyecto = new usuarios_proyectos([
+            "usuario_id" => $usuario->id,
+            "proyecto_id" => $_COOKIE["idProyecto"]
+            ]);
+
+        $usuarioProyecto->save();
+
+        return redirect()->route("UsuariosProyectos");
+
     }
 
     public function show($id)
