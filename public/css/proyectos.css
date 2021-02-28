@@ -16,10 +16,10 @@ body #over2 {
   z-index: 0;
 }
 body #over2 {
-  height: 90%;
+  height: 85%;
 }
 body #over2 + div {
-  height: 10%;
+  height: 15%;
 }
 body #over2 span {
   color: red;

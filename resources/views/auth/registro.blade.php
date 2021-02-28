@@ -117,7 +117,7 @@
                                     </div>
                                     <div class="card-footer text-center">
                                         <div class="small">
-                                            <a href="{{route('login')}}">Tienes una cuenta? Ir al login</a></div>
+                                            <a href="{{route('index')}}">Tienes una cuenta? Ir al login</a></div>
                                     </div>
                                 </div>
                             </div>

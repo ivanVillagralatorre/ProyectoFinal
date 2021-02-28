@@ -13,3 +13,12 @@ function validarLogin() {
         return false;
     }
 }
+function validarComentario() {
+    var text = $('#textarea').val();
+    if (text == '') {
+        return false;
+    }
+    else {
+        return !((text === null || text === void 0 ? void 0 : text.length) == 0 || (text === null || text === void 0 ? void 0 : text.length) > 255);
+    }
+}

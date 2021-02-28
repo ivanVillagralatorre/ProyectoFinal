@@ -1,4 +1,5 @@
 $(document).ready(function (){
+
 })
 
 function validarLogin():boolean{
@@ -14,6 +15,18 @@ function validarLogin():boolean{
         $('#inputPassword').val('');
         $('#inputPassword').css('border','1px solid red');
         return false
+    }
+
+}
+
+function validarComentario():boolean{
+    let text : string | number | string[] = $('#textarea').val();
+
+    if (text=='')
+    {
+        return false;
+    }else{
+        return !(text?.length == 0 || text?.length > 255);
     }
 
 }
