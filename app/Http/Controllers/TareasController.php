@@ -32,6 +32,21 @@ class TareasController extends Controller
             ];
             $tarea->datosAutor = $datosAutor;
 
+            $participantes = Tareas_usuarios::get()->where('tarea_id',$tarea->id);
+
+
+           $listapart = [];
+            foreach($participantes as $participante){
+
+                $p = User::get()->where('id',$participante-> usuario_id)->first();
+                array_push($listapart,$p);
+
+            }
+
+            $tarea->participantes=$listapart;
+
+
+
         }
 
 
