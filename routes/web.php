@@ -33,8 +33,7 @@ Route::get("/home", "ProyectoController@index")->name("home");
 Route::post("/insertarProyecto", "ProyectoController@store")->name("insertarProyecto");
 Route::get("/proyecto/{id}", "ProyectoController@show")->name("abrirProyecto");
 Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
-Route::get('/tareas','TareasController@index')->name('mostrarTareas');
-Route::post('/crearTareas','TareasController@store')->name('crearTareas');
+
 
 
 //MENSAJES
@@ -61,3 +60,7 @@ Route::get('/public/{archivo}', function ($archivo){
     return Storage::download("planos/".$archivo);
 })->name('multimedia.descargar');
 
+//tareas
+Route::get('/tareas','TareasController@index')->name('mostrarTareas');
+Route::post('/crearTareas','TareasController@store')->name('crearTareas');
+Route::post('/addPt','TareasController@addPtarea')->name('addPtarea');
