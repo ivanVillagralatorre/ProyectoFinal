@@ -24,16 +24,20 @@
 
             @foreach($listaUsuarios as $usuario)
 
-                <form method="post" action="">
+                <form method="post" action="{{route("eliminarUsuarioProyecto")}}">
                     @csrf
                     <tr>
-                        <input type="hidden" name="idProyecto" value="">
+                        <input type="hidden" name="idUsuario" value="{{$usuario->id}}">
                         <th scope="row">{{$x++}}</th>
                         <td>{{$usuario->name}}</td>
                         <td>{{$usuario->apellidos}}</td>
                         <td>{{$usuario->email}}</td>
                         @if($propietario->id == Auth::user()->id)
-                            <td><input type="submit" class="btn btn-dark" value="Eliminar"></td>
+                            @if($usuario->id == $propietario->id)
+                                <td><input type="submit" class="btn btn-dark" value="Eliminar" disabled></td>
+                            @else
+                                <td><input type="submit" class="btn btn-dark" value="Eliminar"></td>
+                            @endif
                         @endif
                     </tr>
                 </form>

@@ -63,8 +63,26 @@ class UsuariosProyectosController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        usuarios_proyectos::where([
+            ['usuario_id', '=', request("idUsuario")],
+            ['proyecto_id', '=', $_COOKIE["idProyecto"]]
+        ])->delete();
+
+        return redirect()->route("UsuariosProyectos");
+
+    }
+
+    public function comprobarEmail(){
+
+        $usuario = User::get()->where("email", request("email"));
+
+        if($usuario == null){
+            return "no existe";
+        }else{
+            return "si existe";
+        }
+
     }
 }

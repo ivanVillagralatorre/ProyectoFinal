@@ -43,6 +43,8 @@ Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComent
 //UsuariosProyectos
 Route::get("/listaDeUsuarios", "usuariosProyectosController@index")->name("UsuariosProyectos");
 Route::post("/AnadirUsuarioProyecto", "usuariosProyectosController@store")->name("AnadirUsuarioProyecto");
+Route::post("/comprobarEmail", "usuariosProyectosController@comprobarEmail")->name("comprobarEmail");
+Route::post("/eliminarUsuarioProyecto", "usuariosProyectosController@destroy")->name("eliminarUsuarioProyecto");
 
 
 //ARCHIVOS
