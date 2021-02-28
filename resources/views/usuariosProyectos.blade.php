@@ -4,7 +4,7 @@
 
     <!-- TABLA CON TODOS LOS USUARIOS -->
     <div class="d-flex flex-column align-items-center w-100">
-        <p class="h3">Lista de usuarios</p>
+        <p class="h3">Lista de participantes</p>
 
 
 
@@ -15,7 +15,9 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Email</th>
-                <th scope="col">¿Invitar?</th>
+                @if($propietario->id == Auth::user()->id)
+                    <th scope="col">Acción</th>
+                @endif
             </tr>
             </thead>
             <tbody>
@@ -30,7 +32,9 @@
                         <td>{{$usuario->name}}</td>
                         <td>{{$usuario->apellidos}}</td>
                         <td>{{$usuario->email}}</td>
-                        <td><input type="submit" class="btn btn-dark" value="Eliminar"></td>
+                        @if($propietario->id == Auth::user()->id)
+                            <td><input type="submit" class="btn btn-dark" value="Eliminar"></td>
+                        @endif
                     </tr>
                 </form>
 
@@ -39,9 +43,11 @@
             </tbody>
         </table>
 
-        <button type="button" class="btn btn-dark align-self-start ml-3" data-toggle="modal" data-target="#AnadirParticipante">
-            Añadir participante
-        </button>
+        @if($propietario->id == Auth::user()->id)
+            <button type="button" class="btn btn-dark align-self-start ml-3" data-toggle="modal" data-target="#AnadirParticipante">
+                Añadir participante
+            </button>
+        @endif
 
 
         <!-- Modal -->

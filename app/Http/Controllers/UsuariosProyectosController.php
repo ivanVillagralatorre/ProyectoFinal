@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Proyecto;
 use App\Models\User;
 use App\Models\usuarios_proyectos;
 use Illuminate\Http\Request;
@@ -14,13 +15,17 @@ class UsuariosProyectosController extends Controller
     {
         $usuariosProyectos = usuarios_proyectos::get()->where("proyecto_id", $_COOKIE["idProyecto"]);
 
+        //Para acceder al propietario
+        $proyecto = Proyecto::get()->where("id", $_COOKIE["idProyecto"])->first();
+        $propietario = User::get()->where("id", $proyecto->usuario_id)->first();
+
         $listaUsuarios = array();
 
         foreach ($usuariosProyectos as $usuarioProyecto){
             array_push($listaUsuarios, User::get()->where("id", $usuarioProyecto->usuario_id)->first());
         }
 
-        return view("usuariosProyectos", ["listaUsuarios" => $listaUsuarios, "x" => 1]);
+        return view("usuariosProyectos", ["listaUsuarios" => $listaUsuarios, "x" => 1, "propietario" => $propietario]);
     }
 
     public function create()
