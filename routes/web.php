@@ -34,7 +34,7 @@ Route::post("/insertarProyecto", "ProyectoController@store")->name("insertarProy
 Route::get("/proyecto/{id}", "ProyectoController@show")->name("abrirProyecto");
 Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
 Route::get('/tareas','TareasController@index')->name('mostrarTareas');
-Route::post('/tareas','TareasController@store')->name('crearTareas');
+Route::post('/crearTareas','TareasController@store')->name('crearTareas');
 
 
 //UsuariosProyectos
