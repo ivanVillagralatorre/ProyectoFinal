@@ -119,7 +119,9 @@
                             <th scope="row">{{$z++}}</th>
                             <td>{{$proyecto->titulo}}</td>
 
-                            <form>
+                            <form method="post" action="{{route("aceptarProyecto")}}">
+                                @csrf
+                                <input type="hidden" name="idProyecto" value="{{$proyecto->id}}">
                                 <td><input type="submit" class="btn btn-success" value="Aceptar"></td>
                             </form>
 

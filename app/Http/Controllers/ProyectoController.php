@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\usuarios_proyectos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProyectoController extends Controller
 {
@@ -168,6 +169,20 @@ class ProyectoController extends Controller
 
 
       return back();
+
+    }
+
+
+    public function aceptarProyecto(){
+
+        DB::table("usuarios_proyectos")->where("usuario_id", Auth::user()->id)->where("proyecto_id", request("idProyecto"))->update([
+            "estado" => 1
+        ]);
+
+        return redirect()->route("home");
+    }
+
+    public function rechazarProyecto(){
 
     }
 }
