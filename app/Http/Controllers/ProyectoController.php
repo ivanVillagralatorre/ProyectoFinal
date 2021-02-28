@@ -28,7 +28,11 @@ class ProyectoController extends Controller
 
 
         $peticionesPendientes = usuarios_proyectos::get()->where("usuario_id", $usuario->id)->where("estado", "0");
+        $listaPeticiones = array();
 
+        foreach ($peticionesPendientes as $peticion){
+            array_push($listaPeticiones, Proyecto::get()->where("id", $peticion->proyecto_id)->first());
+        }
 
         $usuariosProyectos = usuarios_proyectos::get()->where("usuario_id", $usuario->id)->where("estado", "1");
         $listaProyectos = array();
@@ -40,7 +44,7 @@ class ProyectoController extends Controller
 
 
         //"usuario" => $usuario
-        return view("home", ["listaProyectos" => $listaProyectos, "x" => 1, "peticionesPendientes" => $peticionesPendientes]);
+        return view("home", ["listaProyectos" => $listaProyectos, "x" => 1, "z" => 1, "peticionesPendientes" => $listaPeticiones]);
     }
 
     /**
