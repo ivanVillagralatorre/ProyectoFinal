@@ -19,7 +19,7 @@
 
             @foreach($listaUsuarios as $usuario)
 
-                <form method="post" action="{{route('abrirProyecto')}}">
+                <form method="post" action="">
                     @csrf
                     <tr>
                         <input type="hidden" name="idProyecto" value="{{$usuario->id}}">
