@@ -125,7 +125,9 @@
                                 <td><input type="submit" class="btn btn-success" value="Aceptar"></td>
                             </form>
 
-                            <form>
+                            <form method="post" action="{{route("rechazarProyecto")}}">
+                                @csrf
+                                <input type="hidden" name="idProyecto" value="{{$proyecto->id}}">
                                 <td><input type="submit" class="btn btn-danger" value="Rechazar"></td>
                             </form>
                         </tr>

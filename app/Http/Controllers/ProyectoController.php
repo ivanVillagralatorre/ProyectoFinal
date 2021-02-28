@@ -174,7 +174,6 @@ class ProyectoController extends Controller
 
 
     public function aceptarProyecto(){
-
         DB::table("usuarios_proyectos")->where("usuario_id", Auth::user()->id)->where("proyecto_id", request("idProyecto"))->update([
             "estado" => 1
         ]);
@@ -183,6 +182,8 @@ class ProyectoController extends Controller
     }
 
     public function rechazarProyecto(){
+        DB::table("usuarios_proyectos")->where("usuario_id", Auth::user()->id)->where("proyecto_id", request("idProyecto"))->delete();
 
+        return redirect()->route("home");
     }
 }
