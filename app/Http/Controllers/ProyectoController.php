@@ -26,7 +26,16 @@ class ProyectoController extends Controller
             return redirect("/");
         }
 
-        $listaProyectos = Proyecto::get()->where("usuario_id", $usuario["id"]);
+
+        //$listaProyectos = Proyecto::get()->where("usuario_id", $usuario["id"]);
+
+        $usuariosProyectos = usuarios_proyectos::get()->where("usuario_id", $usuario->id);
+        $listaProyectos = array();
+
+        foreach ($usuariosProyectos as $usuarioProyecto){
+            array_push($listaProyectos, Proyecto::get()->where("id", $usuarioProyecto->proyecto_id)->first());
+        }
+
 
         //"usuario" => $usuario
         return view("home", ["listaProyectos" => $listaProyectos, "x" => 1]);
@@ -86,7 +95,7 @@ class ProyectoController extends Controller
         setcookie("idProyecto",$id,time()+31556926 ,'/');
 
         $mensajes = Mensaje::get()->where('proyecto_id',$proyecto->id);
-        $autorProyecto = User::get()->where("id", $proyecto->usuario_id)->first();;
+        $autorProyecto = User::get()->where("id", $proyecto->usuario_id)->first();
 
       foreach ($mensajes as $mensaje){
 
