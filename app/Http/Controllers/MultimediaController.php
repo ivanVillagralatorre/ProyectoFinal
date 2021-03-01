@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Storage;
 class MultimediaController extends Controller
 {
     public function index(){
+
         //obtener datos del proyecto seleccionado mediante la cookie
         $proyecto = Proyecto::find($_COOKIE['idProyecto']);
         //obtener archivos del proyecto seleccionado
-        $listaArchivos = Multimedia::get()->where('proyecto_id',$proyecto->id);
+        $listaArchivos = Multimedia::orderBy('updated_at','DESC')->get()->where('proyecto_id',$proyecto->id);
 
 
         return view('archivos')->with('proyecto',$proyecto)->with('listaArchivos',$listaArchivos);

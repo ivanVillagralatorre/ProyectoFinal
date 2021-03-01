@@ -4,22 +4,33 @@ var extensionesPermitidas = [
 ];
 $(document).ready(function () {
     $('#archivo').change(function () {
-        validar();
+        validarVacio();
+        validarExtension();
     });
     $('#formMultimedia').on('submit', function (e) {
+        validarVacio();
         //si ocurre algun error evitar el submit:
         if (error) {
             e.preventDefault();
         }
     });
 });
-function validar() {
+function validarVacio() {
     var archivo = $('#archivo').val().toString();
     try {
         if (archivo == "") {
             $("#iconoArchivo").css("display", "none");
             throw new Error();
         }
+        error = false;
+    }
+    catch (err) {
+        error = true;
+    }
+}
+function validarExtension() {
+    var archivo = $('#archivo').val().toString();
+    try {
         var extension = archivo.substring(archivo.lastIndexOf('.'), archivo.length);
         extension = extension.substring(1, extension.length);
         if (extensionesPermitidas.includes(extension)) {
