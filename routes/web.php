@@ -35,9 +35,6 @@ Route::post("/rechazarProyecto", "ProyectoController@rechazarProyecto")->name("r
 Route::get("/proyecto/{id}", "ProyectoController@show")->name("abrirProyecto");
 Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
 
-Route::get('/tareas','TareasController@index')->name('mostrarTareas');
-Route::post('/crearTareas','TareasController@store')->name('crearTareas');
-
 
 //MENSAJES
 Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
@@ -57,3 +54,7 @@ Route::post('archivos/{proyecto}','MultimediaController@store')->name('multimedi
 ////Descargar archivos
 Route::get('/public/{archivo}', 'MultimediaController@descargar')->name('multimedia.descargar');
 
+//tareas
+Route::get('/tareas','TareasController@index')->name('mostrarTareas');
+Route::post('/crearTareas','TareasController@store')->name('crearTareas');
+Route::post('/addPt','TareasController@addPtarea')->name('addPtarea');
