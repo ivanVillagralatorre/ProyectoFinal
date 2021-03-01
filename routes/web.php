@@ -58,3 +58,5 @@ Route::get('/public/{archivo}', 'MultimediaController@descargar')->name('multime
 Route::get('/tareas','TareasController@index')->name('mostrarTareas');
 Route::post('/crearTareas','TareasController@store')->name('crearTareas');
 Route::post('/addPt','TareasController@addPtarea')->name('addPtarea');
+Route::post('/endTarea','TareasController@endTarea')->name('endTarea');
+

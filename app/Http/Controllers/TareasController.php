@@ -110,4 +110,19 @@ class TareasController extends Controller
 
 
     }
+
+    public function endTarea()
+    {
+
+        $tarea = Tarea::get()->where('id',\request('idT'))->first();
+
+
+        $tarea->estado = true;
+        $tarea->fecha_vencimiento=date( "Y-m-d H:i:s");
+
+        $tarea->save();
+
+        return redirect()->route('mostrarTareas');
+
+    }
 }

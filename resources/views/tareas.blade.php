@@ -50,7 +50,7 @@
       </div>
 
       <div  id="contenedorTareas" class="d-flex justify-content-center flex-wrap w-100">
-          @foreach($listatareas as $tarea)
+          @forelse($listatareas as $tarea)
               <div class="accordion-item tstyle rounded id="tarea{{$tarea->id}}">
                   <h2 class="accordion-header" >
                       <button class=" text-center accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t{{$tarea->id}}" aria-expanded="false" aria-controls="t{{$tarea->id}}">
@@ -60,15 +60,43 @@
                   <div id="t{{$tarea->id}}" class="accordion-collapse  rounded collapse" aria-labelledby="tarea{{$tarea->id}}" data-bs-parent="#contenedorTareas">
                       <div class="accordion-body w-100 d-flex flex-wrap p-2">
 
-                          @if($tarea->estado==0)
-                          <p>Estado:</p><span>En procesp</span>
-                          @else
-                          <p>estado:</p><span>Finalizada</span>
-                          @endif
+                          <div class="w-50">
+                              @if($tarea->estado==0)
+                                  <div class="">
+                                      <p><strong>Estado</strong>:</p><span class="text-success">En procesp</span>
+                                  </div>
 
-                              <div class="w-100">
+                              @else
+                                  <div class="">
+                                      <p class=>Estado: <span class="text-danger">Finalizada</span></p>
+                                  </div>
+                              @endif
+
+                                  <P class="mb-1">Fecha-inicio: </P>
+                                  <span class="mt-0">{{$tarea->created_at}}</span>
+
+                          </div>
+
+
+
+                          <div class="w-50 d-flex justify-content-center flex-column">
                                   <p>Autor: {{$tarea->datosAutor['name']}}</p>
-                              </div>
+                              @if($tarea->estado==0)
+                                  <P>Fecha-fin:<span>....</span></P>
+                              @else
+                                  <P class="mb-1">Fecha-fin: </P>
+                                  <span class="mt-0">{{$tarea->fecha_vencimiento}}</span>
+
+                              @endif
+                          </div>
+
+
+                          <div class="w-100 mt-3 mb-3">
+                              <P class="mb-1">Descripcion: </P>
+                              <span class="mt-0 mb-4 border-dark rounded">{{$tarea->descripcion}}</span>
+
+                          </div>
+
 
                           <div class="w-50 justify-content-center p-1">
                               <!-- Button trigger modal -->
@@ -103,10 +131,13 @@
                           </div>
                               <div class="w-50 d-flex justify-content-center p-1">
                                   <!-- Button trigger modal -->
+                                  @if(auth()->user()->id==$tarea->datosAutor['id'])
+
                                   <button type="button"  class="btn w-75 btn-dark" data-toggle="modal" data-target="#modal{{$tarea->id}}">
-                                      Añadir
+                                      Añadir Participante
                                   </button>
 
+                              @endif
 
                                   <!-- Modal -->
                                   <div class="modal fade" id="modal{{$tarea->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -120,13 +151,13 @@
                                               </div>
 
 
-                                              <form id="formProyecto" method="post" action="{{route('addPtarea')}}">
+                                              <form  method="post" action="{{route('addPtarea')}}">
                                                   @csrf
                                                   <div class="modal-body">
                                                       <!--FORMULARIO PARA LA CREACIÓN DE PROYECTOS-->
                                                       <div class="form-group d-flex">
                                                           <input type="hidden" value="{{$tarea->id}}" name="idT">
-                                                          <input type="email" name="email" class="form-control" id="titulo" placeholder="antonio@siwo.com">
+                                                          <input type="email" name="email" class="form-control"  placeholder="antonio@siwo.com">
                                                           <input type="submit" class="btn btn-dark ml-2" value="Añadir">
                                                       </div>
                                                   </div>
@@ -138,6 +169,15 @@
                                           </div>
                                       </div>
                                   </div>
+
+                                  @if($tarea->estado==0)
+                              <form action="{{route('endTarea')}}" method="POST">
+                                  @csrf
+                                  <input type="hidden" name="idT" value="{{$tarea->id}}">
+                                  <button  class="btn  ml-1 btn-danger">finalizar</button>
+
+                              </form>
+                                 @endif
                               </div>
 
 
@@ -147,8 +187,12 @@
                   </div>
               </div>
 
+      @empty
 
-          @endforeach
+          <h1 class="text-center text-uppercase">No hay tareas</h1>
+
+
+          @endforelse
 
 
       </div>
