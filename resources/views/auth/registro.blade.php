@@ -7,6 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Registro</title>
+        <link rel="icon" type="image/png" href="/media/Solo_dibujo.png">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
               integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
               crossorigin="anonymous">
@@ -21,8 +22,8 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg my-5">
-                                    <div class="card-header">
-                                        <h3 class="text-center font-weight-light my-4">Registro</h3>
+                                    <div class="card-header h- text-center">
+                                        <img class="mh-100" src="/media/logo-fondo.png">
                                     </div>
                                     <div class="card-body">
                                         <form method="POST" action="{{ route('register') }}">
