@@ -5013,6 +5013,7 @@ input[type=button].btn-block {
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  height: 100px;
 }
 
 .card-header:first-child {
@@ -11219,6 +11220,11 @@ body {
 
 .sb-sidenav-light .sb-sidenav-footer {
   background-color: #e9ecef;
+}
+
+.form-floating > .form-control:focus ~ label {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 

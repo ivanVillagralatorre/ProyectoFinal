@@ -7,10 +7,11 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Registro</title>
+        <link rel="icon" type="image/png" href="/media/Solo_dibujo.png">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
               integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
               crossorigin="anonymous">
-        <link href="/css/styles.css" rel="stylesheet" />
+        <link href="/css/registro.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
@@ -21,8 +22,8 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg my-5">
-                                    <div class="card-header">
-                                        <h3 class="text-center font-weight-light my-4">Registro</h3>
+                                    <div class="card-header h- text-center">
+                                        <img class="mh-100" src="/media/logo-fondo.png">
                                     </div>
                                     <div class="card-body">
                                         <form method="POST" action="{{ route('register') }}">
@@ -33,7 +34,7 @@
                                                            id="inputNickname" type="text"
                                                            placeholder="Teclea tu nombre de usuario"
                                                            name="name" value="{{ old('name') }}"
-                                                           required autocomplete="name" autofocus/>
+                                                           required autocomplete="name"/>
                                                     <label class="small mb-1" for="inputNickname">Usuario</label>
                                                 </div>
                                                 @error('name')
@@ -61,12 +62,14 @@
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputPassword">Contraseña</label>
-                                                        <input class="form-control py-4
-                                                               @error('password') is-invalid @enderror"
-                                                               id="inputPassword" type="password"
-                                                               placeholder="Teclea tu contraseña" name="password"
-                                                               required autocomplete="new-password"/>
+                                                        <div class="form-floating">
+                                                            <input class="form-control py-4
+                                                                   @error('password') is-invalid @enderror"
+                                                                   id="inputPassword" type="password"
+                                                                   placeholder="Teclea tu contraseña" name="password"
+                                                                   required autocomplete="new-password"/>
+                                                            <label class="small mb-1" for="inputPassword">Contraseña</label>
+                                                        </div>
                                                         @error('password')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -76,35 +79,41 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputConfirmPassword">
-                                                            Repite Contraseña
-                                                        </label>
-                                                        <input class="form-control py-4" id="inputConfirmPassword"
-                                                               type="password" placeholder="Confirma contraseña"
-                                                               name="password_confirmation"
-                                                               required autocomplete="new-password"/>
+                                                        <div class="form-floating">
+                                                            <input class="form-control py-4" id="inputConfirmPassword"
+                                                                   type="password" placeholder="Confirma contraseña"
+                                                                   name="password_confirmation"
+                                                                   required autocomplete="new-password"/>
+                                                            <label class="small mb-1" for="inputConfirmPassword">
+                                                                Repite Contraseña
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputFirstName">
-                                                            Nombre <span>(opcional)</span>
-                                                        </label>
-                                                        <input class="form-control py-4" id="inputFirstName"
-                                                               type="text" placeholder="Teclea tu nombre"
-                                                               name="nombre" value="{{ old('nombre') }}" />
+                                                        <div class="form-floating">
+                                                            <input class="form-control py-4" id="inputFirstName"
+                                                                   type="text" placeholder="Teclea tu nombre"
+                                                                   name="nombre" value="{{ old('nombre') }}" />
+                                                            <label class="small mb-1" for="inputFirstName">
+                                                                Nombre <span>(opcional)</span>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputLastName">
-                                                            Apellidos <span>(opcional)</span>
-                                                        </label>
-                                                        <input class="form-control py-4" id="inputLastName"
-                                                               type="text" placeholder="Teclea apellidos"
-                                                               name="apellidos" value="{{ old('apellidos') }}" />
+                                                        <div class="form-floating">
+                                                            <input class="form-control py-4" id="inputLastName"
+                                                                   type="text" placeholder="Teclea apellidos"
+                                                                   name="apellidos" value="{{ old('apellidos') }}" />
+                                                            <label class="small mb-1" for="inputLastName">
+                                                                Apellidos <span>(opcional)</span>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
