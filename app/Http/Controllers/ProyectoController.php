@@ -119,6 +119,8 @@ class ProyectoController extends Controller
 
         }
 
+
+
         return view('proyecto')->with('proyecto',$proyecto)->with('mensajes',$mensajes)->with('aut',$autorProyecto);
 
     }
@@ -154,6 +156,18 @@ class ProyectoController extends Controller
      */
     public function destroy($id)
     {
+
+        $proyecto = Proyecto::find($id);
+
+        if (empty($proyecto))
+        {
+            return redirect()->route("home");
+
+        }
+
+        $proyecto->delete();
+
+        return redirect()->route("home");
         //
     }
 

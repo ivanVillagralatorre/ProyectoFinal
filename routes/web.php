@@ -34,6 +34,7 @@ Route::post("/aceptarProyecto", "ProyectoController@aceptarProyecto")->name("ace
 Route::post("/rechazarProyecto", "ProyectoController@rechazarProyecto")->name("rechazarProyecto");
 Route::get("/proyecto/{id}", "ProyectoController@show")->name("abrirProyecto");
 Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
+Route::get('/proyecto/eliminar/{id}','ProyectoController@destroy')->name('eliminarProyecto');
 
 
 //MENSAJES
