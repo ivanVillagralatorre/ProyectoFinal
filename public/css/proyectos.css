@@ -44,6 +44,9 @@ body #descripcion button {
   height: 50px;
   width: 50%;
 }
+body .btnEnviar {
+  width: 50% !important;
+}
 
 @media (min-width: 768px) {
   #descripcion button {
@@ -78,6 +81,10 @@ body #descripcion button {
 
   #over2 + div {
     height: 10% !important;
+  }
+
+  .btnEnviar {
+    width: 100% !important;
   }
 }
 
