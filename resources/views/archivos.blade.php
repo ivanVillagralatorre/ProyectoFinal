@@ -1,6 +1,6 @@
 @extends('layouts.layoutProyecto')
 @section('content')
-    <div class="container-fluid d-flex flex-column py-4">
+    <div class="container-fluid d-flex flex-column p-4">
         <!--FORM PARA SUBIR ARCHIVOS-->
         <form id="formMultimedia" action="{{route('multimedia.guardar',$proyecto->id)}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
