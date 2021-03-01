@@ -18,6 +18,7 @@ class CreateUsuariosProyectosTable extends Migration
             $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('proyecto_id');
             $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete('cascade');
+            $table->integer("estado");
             $table->timestamps();
         });
     }
