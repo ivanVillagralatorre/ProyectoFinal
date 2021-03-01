@@ -14,7 +14,7 @@
         <link href="/css/registro.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-primary">
+    <body class="bg-dark">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -118,7 +118,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group mt-4 mb-0">
-                                                <button type="submit" class="btn btn-primary btn-block">
+                                                <button type="submit" class="btn btn-dark btn-block">
                                                     Crear cuenta
                                                 </button>
                                             </div>
@@ -134,7 +134,7 @@
                     </div>
                 </main>
             </div>
-         
+
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
