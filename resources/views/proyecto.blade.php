@@ -12,9 +12,19 @@
         <h1 class="mb-3 text-light">{{$proyecto->titulo}}</h1>
         <span id="titulospan" class="mb-3 text-light text-uppercase">informacion del proyecto</span>
 
-        <button type="button" class="btn text-uppercase btnEnviar btn-danger" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn text-uppercase btnEnviar btn-success" data-toggle="modal" data-target="#exampleModal">
             Informacion
         </button>
+
+       @if($proyecto->usuario_id==auth()->user()->id)
+           <button type="button" class=" mt-3 btn text-uppercase btnEnviar btn-danger" onclick="location.href='/proyecto/eliminar/{{$proyecto->id}}'">
+               Eliminar
+           </button>
+       @endif
+
+
+
+
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -34,7 +44,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary text-uppercase" data-dismiss="modal">cerrar</button>
+                                <button type="button"  class="btn btn-secondary text-uppercase " data-dismiss="modal">cerrar</button>
                             </div>
                     </div>
 

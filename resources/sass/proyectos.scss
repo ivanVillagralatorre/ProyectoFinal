@@ -96,6 +96,8 @@ body{
     #descripcion button{height:50px;
                         width: 50%;}
 
+    .btnEnviar{width: 50% !important;}
+
 }
 
 @media (min-width:768px) {
@@ -114,6 +116,7 @@ body{
 
     #over2{height: 90% !important;}
     #over2+div{height: 10% !important;}
+    .btnEnviar{width: 100% !important;}
 
 }
 
