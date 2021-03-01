@@ -50,10 +50,25 @@ class TareasController extends Controller
 
         }
 
+        $participantesProyecto = usuarios_proyectos::get()->where('proyecto_id',$_COOKIE['idProyecto']);
+
+        foreach ($participantesProyecto as $p)
+        {
+            $user = User::get()->where('id',$p->usuario_id)->first;
+
+
+            $datosParticipante=[
+              'id'=> $user->id,
+              'name'=>$user->name
+            ];
+            $participantesProyecto->dt=$datosParticipante;
+
+        }
 
 
 
-        return view('tareas')->with('listatareas',$listaTareas);
+
+        return view('tareas')->with('listatareas',$listaTareas)->with('participantesProyecto',$participantesProyecto);
     }
 
 

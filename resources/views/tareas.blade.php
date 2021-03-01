@@ -64,7 +64,7 @@
                           <div class="w-50">
                               @if($tarea->estado==0)
                                   <div class="">
-                                      <p><strong>Estado</strong>:<strong class="text-success">En procesp</strong></p>
+                                      <p><strong>Estado</strong>:<strong class="text-success">En proceso</strong></p>
                                   </div>
 
                               @else
@@ -275,7 +275,7 @@
                       <!-- Button trigger modal -->
                       @if(auth()->user()->id==$tarea->datosAutor['id'])
 
-                          <button type="button"  class="btn w-75 btn-dark" data-toggle="modal" data-target="#modal{{$tarea->id}}">
+                          <button type="button"  class="btn w-75 btn-dark d-none" data-toggle="modal" data-target="#modal{{$tarea->id}}">
                               Añadir
                           </button>
 
@@ -297,7 +297,7 @@
                                       @csrf
                                       <div class="modal-body">
                                           <!--FORMULARIO PARA LA CREACIÓN DE PROYECTOS-->
-                                          <div class="form-group d-flex">
+                                          <div class="form-group   d-flex">
                                               <input type="hidden" value="{{$tarea->id}}" name="idT">
                                               <input type="email" name="email" class="form-control"  placeholder="antonio@siwo.com">
                                               <input type="submit" class="btn btn-dark ml-2" value="Añadir">
