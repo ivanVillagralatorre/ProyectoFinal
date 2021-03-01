@@ -13,15 +13,14 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
-Route::get('/',"LoginView@index")->name('index');
-
-
-Route::get('/pass/reset',function (){return view('auth.passwords.em');})->name('pass/resset');
-
 
 //RUTAS DE REGISTRO,LOGIN Y RESET
 
 Auth::routes();
+
+Route::get('/',"LoginView@index")->name('index');
+
+Route::get('/pass/reset',function (){return view('auth.passwords.em');})->name('pass/resset');
 
 Route::view("/layout", "layout");
 
@@ -41,18 +40,10 @@ Route::get("/listaDeUsuarios", "usuariosProyectosController@index")->name("Usuar
 
 
 //ARCHIVOS
-Route::get('/archivos',function (){
-    return view('archivos');
-})->name('multimedia');
+Route::get('/archivos','MultimediaController@index')->name('multimedia');
+////subir archivos
+Route::post('archivos/{proyecto}','MultimediaController@store')->name('multimedia.guardar');
 
-Route::post('multimedia',function (){
-    request()->validate(['file'=>'']);
-    return request()->archivo->storeAs('public',request()->archivo->getClientOriginalName());
-})->name('multimedia.guardar');
-
-////DESCARGAR ARCHIVOS
-
-Route::get('/public/{archivo}', function ($archivo){
-    return Storage::download("planos/".$archivo);
-})->name('multimedia.descargar');
+////Descargar archivos
+Route::get('/public/{archivo}', 'MultimediaController@descargar')->name('multimedia.descargar');
 

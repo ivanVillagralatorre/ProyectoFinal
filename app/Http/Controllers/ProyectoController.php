@@ -77,7 +77,7 @@ class ProyectoController extends Controller
         setcookie("idProyecto",$id,time()+31556926 ,'/');
 
         $mensajes = Mensaje::get()->where('proyecto_id',$proyecto->id);
-        $autorProyecto = User::get()->where("id", $proyecto->usuario_id)->first();;
+        $autorProyecto = User::get()->where("id", $proyecto->usuario_id)->first();
 
       foreach ($mensajes as $mensaje){
 
