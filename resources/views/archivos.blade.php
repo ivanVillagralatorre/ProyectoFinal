@@ -1,44 +1,48 @@
 @extends('layouts.layoutProyecto')
 @section('content')
     <div class="container-fluid d-flex flex-column py-4">
-        <!--BOTÓN PARA SUBIR ARCHIVOS-->
-        <form action="#" method="post" enctype="multipart/form-data">
+        <!--FORM PARA SUBIR ARCHIVOS-->
+        <form action="{{route('multimedia.guardar',$proyecto->id)}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
-            <div class="d-flex">
-                <button type="submit" class="btn btn-dark" id="subirArchivo" data-bs-toggle="collapse" data-bs-target="#select-archivo" >
+            <div class="d-flex mb-3">
+                <div id="select-archivo" class="p-1 mr-3">
+                    <input type="file" name="archivo" id="archivo">
+                    <span id="iconoArchivo" class="fa"></span>
+                </div>
+                <button type="submit" class="btn btn-dark" id="subirArchivo">
                     Subir arhivo
                 </button>
-                <div id="select-archivo" class="p-2">
-                    <input type="file" name="archivo" id="archivo">
-                    <span class="fa fa-check-circle" id="iconoArchivo"></span>
-                </div>
             </div>
         </form>
         <!-- TABLA CON LOS ARCHIVOS -->
         <div>
-            <p class="h3">Archivos del proyecto</p>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Fecha de creación</th>
-                    <th scope="col">¿Descargar?</th>
-                </tr>
-                </thead>
-                <tbody>
-
-{{--                @foreach($listaArchivos as $archivo)--}}
+            <p class="h3">Archivos de {{$proyecto->titulo}}</p>
+            @if(count($listaArchivos)>0)
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-{{--                        <input type="hidden" name="idProyecto" value="{{$proyecto->id}}">--}}
-                            <th scope="row">nombre archivo</th>
-                            <td>creador del archivo</td>
-                            <td>fecha en la que se subió</td>
-                            <td><a class="btn btn-dark" href="#">Descargar</a></td>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Fecha de creación</th>
+                            <th scope="col">¿Descargar?</th>
                         </tr>
-{{--                @endforeach--}}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    @foreach($listaArchivos as $archivo)
+                            <tr>
+                                <th scope="row">{{$archivo->nombre}}</th>
+                                <td>{{$archivo->created_at}}</td>
+                                <td>
+                                    <a class="btn btn-dark" href="{{route('multimedia.descargar',$archivo->id)}}">
+                                        Descargar
+                                    </a>
+                                </td>
+                            </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @else
+                <p>No se ha subido ningún archivo al proyecto</p>
+            @endif
         </div>
     </div>
 

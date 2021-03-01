@@ -13,15 +13,14 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
-Route::get('/',"LoginView@index")->name('index');
-
-
-Route::get('/pass/reset',function (){return view('auth.passwords.em');})->name('pass/resset');
-
 
 //RUTAS DE REGISTRO,LOGIN Y RESET
 
 Auth::routes();
+
+Route::get('/',"LoginView@index")->name('index');
+
+Route::get('/pass/reset',function (){return view('auth.passwords.em');})->name('pass/resset');
 
 Route::view("/layout", "layout");
 
@@ -36,9 +35,6 @@ Route::post("/rechazarProyecto", "ProyectoController@rechazarProyecto")->name("r
 Route::get("/proyecto/{id}", "ProyectoController@show")->name("abrirProyecto");
 Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
 
-Route::get('/tareas','TareasController@index')->name('mostrarTareas');
-Route::post('/tareas','TareasController@store')->name('crearTareas');
-
 
 //MENSAJES
 Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
@@ -51,18 +47,14 @@ Route::post("/eliminarUsuarioProyecto", "usuariosProyectosController@destroy")->
 
 
 //ARCHIVOS
-Route::get('/archivos',function (){
-    return view('archivos');
-})->name('multimedia');
+Route::get('/archivos','MultimediaController@index')->name('multimedia');
+////subir archivos
+Route::post('archivos/{proyecto}','MultimediaController@store')->name('multimedia.guardar');
 
-Route::post('multimedia',function (){
-    request()->validate(['file'=>'']);
-    return request()->archivo->storeAs('public',request()->archivo->getClientOriginalName());
-})->name('multimedia.guardar');
+////Descargar archivos
+Route::get('/public/{archivo}', 'MultimediaController@descargar')->name('multimedia.descargar');
 
-////DESCARGAR ARCHIVOS
-
-Route::get('/public/{archivo}', function ($archivo){
-    return Storage::download("planos/".$archivo);
-})->name('multimedia.descargar');
-
+//tareas
+Route::get('/tareas','TareasController@index')->name('mostrarTareas');
+Route::post('/crearTareas','TareasController@store')->name('crearTareas');
+Route::post('/addPt','TareasController@addPtarea')->name('addPtarea');
