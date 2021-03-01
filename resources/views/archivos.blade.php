@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid d-flex flex-column py-4">
         <!--FORM PARA SUBIR ARCHIVOS-->
-        <form action="{{route('multimedia.guardar',$proyecto->id)}}" method="post" enctype="multipart/form-data">
+        <form id="formMultimedia" action="{{route('multimedia.guardar',$proyecto->id)}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="d-flex mb-3">
                 <div id="select-archivo" class="p-1 mr-3">

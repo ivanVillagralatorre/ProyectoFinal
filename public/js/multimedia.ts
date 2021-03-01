@@ -7,7 +7,7 @@ $(document).ready(function (){
     $('#archivo').change(function (){
         validar();
     });
-    $('form').first().on('submit',function (e){
+    $('#formMultimedia').on('submit',function (e){
         //si ocurre algun error evitar el submit:
         if(error){
             e.preventDefault();
