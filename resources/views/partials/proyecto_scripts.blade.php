@@ -16,6 +16,46 @@
 <script src="/js/editarPerfil.js"></script>
 <script src="/js/validaciones.js"></script>
 <script src="/js/proj-js/accordeon.js"></script>
+<script>
+    var idT;
+    $('.modal').on('shown.bs.modal', function (e) {
+        idT = this.id;
+    });
+
+
+
+
+    function comprobarName(){
+
+
+        let idTarea = idT.substr(5);
+
+        let s = "select"+idTarea
+
+
+        let _token   = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: "/comprobarParticipante",
+            type:"POST",
+            data:{
+                _token: _token,
+                id:$('select[id='+s+']').val(),
+                idT:idTarea
+            },
+            success:function(response){
+                if(response == "0"){
+                    alert("Ya se encuentra añadido a la tarea.");
+                }else{
+                    alert("Se añadió correctamente al usuario.");
+                    location.reload();
+
+                }
+            },
+        });
+
+    }
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/js/proj-js/scripts.js"></script>

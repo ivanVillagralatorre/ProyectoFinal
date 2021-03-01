@@ -54,16 +54,18 @@ class TareasController extends Controller
 
         foreach ($participantesProyecto as $p)
         {
-            $user = User::get()->where('id',$p->usuario_id)->first;
+            $user = User::get()->where('id',$p->usuario_id)->first();
+
 
 
             $datosParticipante=[
               'id'=> $user->id,
               'name'=>$user->name
             ];
-            $participantesProyecto->dt=$datosParticipante;
+            $p->dt=$datosParticipante;
 
         }
+
 
 
 
@@ -103,8 +105,10 @@ class TareasController extends Controller
         return redirect()->route('mostrarTareas');
     }
 
-    public function addPtarea()
-    {
+    public function addPtarea(){
+
+
+        return request();
 
         $user = User::get()->where('email',request('email'))->first();
 
@@ -126,6 +130,27 @@ class TareasController extends Controller
 
 
     }
+
+    public function ajax(){
+
+
+
+            $comprobacion  = Tareas_usuarios::get()->where('tarea_id',request('idT'))->where('usuario_id',\request('id'))->first();
+
+            if (empty($comprobacion)){
+                Tareas_usuarios::Create([
+                    'usuario_id'=>\request('id'),
+                    'tarea_id'=>\request('idT'),
+                    'estado'=>0
+                ]);
+                return 1;
+
+            }else{
+                return 0;
+            }
+
+
+}
 
     public function endTarea()
     {
