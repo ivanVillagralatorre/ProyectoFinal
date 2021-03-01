@@ -18,7 +18,8 @@ class TareasController extends Controller
 
     {
 
-        $listaTareas = Tarea::get()->where('proyecto_id',$_COOKIE['idProyecto']);
+
+        $listaTareas = Tarea::where('proyecto_id',$_COOKIE['idProyecto'])->paginate(5);
 
         foreach ($listaTareas as $tarea){
 

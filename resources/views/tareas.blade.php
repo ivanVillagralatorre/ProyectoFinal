@@ -338,6 +338,12 @@
           @endforelse
 
 
+
+      </div>
+      <div class="d-flex w-100 justify-content-end border-bottom border-dark">
+
+          {{ $listatareas->links('pagination::bootstrap-4') }}
+
       </div>
 
   </main>
