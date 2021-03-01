@@ -4,7 +4,7 @@
 
     <!-- TABLA CON TODOS LOS USUARIOS -->
     <div class="d-flex flex-column align-items-center w-100">
-        <p class="h3">Lista de usuarios</p>
+        <p class="h3">Lista de participantes</p>
 
 
 
@@ -15,22 +15,30 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Email</th>
-                <th scope="col">¿Invitar?</th>
+                @if($propietario->id == Auth::user()->id)
+                    <th scope="col">Acción</th>
+                @endif
             </tr>
             </thead>
             <tbody>
 
             @foreach($listaUsuarios as $usuario)
 
-                <form method="post" action="">
+                <form method="post" action="{{route("eliminarUsuarioProyecto")}}">
                     @csrf
                     <tr>
-                        <input type="hidden" name="idProyecto" value="">
+                        <input type="hidden" name="idUsuario" value="{{$usuario->id}}">
                         <th scope="row">{{$x++}}</th>
                         <td>{{$usuario->name}}</td>
                         <td>{{$usuario->apellidos}}</td>
                         <td>{{$usuario->email}}</td>
-                        <td><input type="submit" class="btn btn-dark" value="Eliminar"></td>
+                        @if($propietario->id == Auth::user()->id)
+                            @if($usuario->id == $propietario->id)
+                                <td><input type="submit" class="btn btn-dark" value="Eliminar" disabled></td>
+                            @else
+                                <td><input type="submit" class="btn btn-dark" value="Eliminar"></td>
+                            @endif
+                        @endif
                     </tr>
                 </form>
 
@@ -39,9 +47,11 @@
             </tbody>
         </table>
 
-        <button type="button" class="btn btn-dark align-self-start ml-3" data-toggle="modal" data-target="#AnadirParticipante">
-            Añadir participante
-        </button>
+        @if($propietario->id == Auth::user()->id)
+            <button type="button" class="btn btn-dark align-self-start ml-3" data-toggle="modal" data-target="#AnadirParticipante">
+                Añadir participante
+            </button>
+        @endif
 
 
         <!-- Modal -->

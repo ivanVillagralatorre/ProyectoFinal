@@ -13,15 +13,14 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
-Route::get('/',"LoginView@index")->name('index');
-
-
-Route::get('/pass/reset',function (){return view('auth.passwords.em');})->name('pass/resset');
-
 
 //RUTAS DE REGISTRO,LOGIN Y RESET
 
 Auth::routes();
+
+Route::get('/',"LoginView@index")->name('index');
+
+Route::get('/pass/reset',function (){return view('auth.passwords.em');})->name('pass/resset');
 
 Route::view("/layout", "layout");
 
@@ -31,9 +30,10 @@ Route::post("/editarUsuario", "UsuarioController@update")->name("editarUsuario")
 //PROYECTOS
 Route::get("/home", "ProyectoController@index")->name("home");
 Route::post("/insertarProyecto", "ProyectoController@store")->name("insertarProyecto");
+Route::post("/aceptarProyecto", "ProyectoController@aceptarProyecto")->name("aceptarProyecto");
+Route::post("/rechazarProyecto", "ProyectoController@rechazarProyecto")->name("rechazarProyecto");
 Route::get("/proyecto/{id}", "ProyectoController@show")->name("abrirProyecto");
 Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComentario');
-
 
 
 //MENSAJES
@@ -42,23 +42,17 @@ Route::post('/crearCom','ProyectoController@crearComentario')->name('crearComent
 //UsuariosProyectos
 Route::get("/listaDeUsuarios", "usuariosProyectosController@index")->name("UsuariosProyectos");
 Route::post("/AnadirUsuarioProyecto", "usuariosProyectosController@store")->name("AnadirUsuarioProyecto");
+Route::post("/comprobarEmail", "usuariosProyectosController@comprobarEmail")->name("comprobarEmail");
+Route::post("/eliminarUsuarioProyecto", "usuariosProyectosController@destroy")->name("eliminarUsuarioProyecto");
 
 
 //ARCHIVOS
-Route::get('/archivos',function (){
-    return view('archivos');
-})->name('multimedia');
+Route::get('/archivos','MultimediaController@index')->name('multimedia');
+////subir archivos
+Route::post('archivos/{proyecto}','MultimediaController@store')->name('multimedia.guardar');
 
-Route::post('multimedia',function (){
-    request()->validate(['file'=>'']);
-    return request()->archivo->storeAs('public',request()->archivo->getClientOriginalName());
-})->name('multimedia.guardar');
-
-////DESCARGAR ARCHIVOS
-
-Route::get('/public/{archivo}', function ($archivo){
-    return Storage::download("planos/".$archivo);
-})->name('multimedia.descargar');
+////Descargar archivos
+Route::get('/public/{archivo}', 'MultimediaController@descargar')->name('multimedia.descargar');
 
 //tareas
 Route::get('/tareas','TareasController@index')->name('mostrarTareas');
