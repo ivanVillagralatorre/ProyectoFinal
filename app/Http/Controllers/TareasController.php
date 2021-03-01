@@ -18,7 +18,8 @@ class TareasController extends Controller
 
     {
 
-        $listaTareas = Tarea::get()->where('proyecto_id',$_COOKIE['idProyecto']);
+
+        $listaTareas = Tarea::where('proyecto_id',$_COOKIE['idProyecto'])->paginate(5);
 
         foreach ($listaTareas as $tarea){
 
@@ -108,6 +109,21 @@ class TareasController extends Controller
         }
         return redirect()->route('mostrarTareas');
 
+
+    }
+
+    public function endTarea()
+    {
+
+        $tarea = Tarea::get()->where('id',\request('idT'))->first();
+
+
+        $tarea->estado = true;
+        $tarea->fecha_vencimiento=date( "Y-m-d H:i:s");
+
+        $tarea->save();
+
+        return redirect()->route('mostrarTareas');
 
     }
 }

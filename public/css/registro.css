@@ -159,7 +159,8 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: var(--dark);
+
   text-decoration: none;
   background-color: transparent;
 }
@@ -2539,9 +2540,10 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary:focus, .btn-primary.focus {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--primary);
+  background-color: #75a7a4;
+  border-color: #aad2d2;
+
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 
@@ -2552,9 +2554,12 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: #0062cc;
-  border-color: #005cbf;
+
+  color: var(--primary);
+  background-color: #75a7a4;
+  border-color: #aad2d2;
+  font-weight: bolder;
+
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
@@ -10794,6 +10799,12 @@ body {
   background-color: #e9ecef;
 }
 
+.form-floating > .form-control:focus ~ label {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 /*# sourceMappingURL=styles.css.map */
+
 
 /*# sourceMappingURL=registro.css.map */
