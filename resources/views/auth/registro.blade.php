@@ -61,12 +61,14 @@
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputPassword">Contraseña</label>
-                                                        <input class="form-control py-4
-                                                               @error('password') is-invalid @enderror"
-                                                               id="inputPassword" type="password"
-                                                               placeholder="Teclea tu contraseña" name="password"
-                                                               required autocomplete="new-password"/>
+                                                        <div class="form-floating">
+                                                            <input class="form-control py-4
+                                                                   @error('password') is-invalid @enderror"
+                                                                   id="inputPassword" type="password"
+                                                                   placeholder="Teclea tu contraseña" name="password"
+                                                                   required autocomplete="new-password"/>
+                                                            <label class="small mb-1" for="inputPassword">Contraseña</label>
+                                                        </div>
                                                         @error('password')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -76,35 +78,41 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputConfirmPassword">
-                                                            Repite Contraseña
-                                                        </label>
-                                                        <input class="form-control py-4" id="inputConfirmPassword"
-                                                               type="password" placeholder="Confirma contraseña"
-                                                               name="password_confirmation"
-                                                               required autocomplete="new-password"/>
+                                                        <div class="form-floating">
+                                                            <input class="form-control py-4" id="inputConfirmPassword"
+                                                                   type="password" placeholder="Confirma contraseña"
+                                                                   name="password_confirmation"
+                                                                   required autocomplete="new-password"/>
+                                                            <label class="small mb-1" for="inputConfirmPassword">
+                                                                Repite Contraseña
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputFirstName">
-                                                            Nombre <span>(opcional)</span>
-                                                        </label>
-                                                        <input class="form-control py-4" id="inputFirstName"
-                                                               type="text" placeholder="Teclea tu nombre"
-                                                               name="nombre" value="{{ old('nombre') }}" />
+                                                        <div class="form-floating">
+                                                            <input class="form-control py-4" id="inputFirstName"
+                                                                   type="text" placeholder="Teclea tu nombre"
+                                                                   name="nombre" value="{{ old('nombre') }}" />
+                                                            <label class="small mb-1" for="inputFirstName">
+                                                                Nombre <span>(opcional)</span>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputLastName">
-                                                            Apellidos <span>(opcional)</span>
-                                                        </label>
-                                                        <input class="form-control py-4" id="inputLastName"
-                                                               type="text" placeholder="Teclea apellidos"
-                                                               name="apellidos" value="{{ old('apellidos') }}" />
+                                                        <div class="form-floating">
+                                                            <input class="form-control py-4" id="inputLastName"
+                                                                   type="text" placeholder="Teclea apellidos"
+                                                                   name="apellidos" value="{{ old('apellidos') }}" />
+                                                            <label class="small mb-1" for="inputLastName">
+                                                                Apellidos <span>(opcional)</span>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
