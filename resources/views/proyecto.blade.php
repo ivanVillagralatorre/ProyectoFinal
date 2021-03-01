@@ -6,14 +6,13 @@
 @section('content')
 
 
-
-    <div id="descripcion" class=" p-2  order-0  flow-md-grow-5  order-md-1 bg-secondary  border d-flex  flex-column rounded order-0 order-md-1 align-items-center">
+   <div id="descripcion" class=" p-2  order-0  flow-md-grow-5  order-md-1 bg-secondary  border d-flex  flex-column rounded order-0 order-md-1 align-items-center">
 
 
         <h1 class="mb-3 text-light">{{$proyecto->titulo}}</h1>
         <span id="titulospan" class="mb-3 text-light text-uppercase">informacion del proyecto</span>
 
-        <button type="button" class="btn text-uppercase btnEnviar btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn text-uppercase btnEnviar btn-danger" data-toggle="modal" data-target="#exampleModal">
             Informacion
         </button>
 
@@ -87,11 +86,11 @@
         <div class=" bg-secondary rounded   order-2 border">
 
 
-            <form    method="post" action="{{route('crearComentario')}}">
+            <form    method="post" action="{{route('crearComentario')}}" onsubmit="return validarComentario()">
                 @csrf
                 <div class="d-flex justify-content-center  align-items-center h-100">
                     <input type="hidden" value="{{$proyecto->id}}" name="idP">
-                    <textarea name="mensaje" placeholder="Escribe tu mensaje"class="rounded    overflow-hidden "></textarea>
+                    <textarea id="textarea" name="mensaje" placeholder="Escribe tu mensaje"class="rounded    overflow-hidden "></textarea>
                     <button  id="btn" class="btn  btn-dark">Enviar
                     </button>
 

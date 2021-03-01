@@ -68,7 +68,7 @@
                 </thead>
                 <tbody>
 
-                @foreach($listaProyectos as $proyecto)
+                @forelse($listaProyectos as $proyecto)
 
                     <form method="get" action="{{route('abrirProyecto',$proyecto->id)}}">
                         @csrf
@@ -81,7 +81,68 @@
                         </tr>
                     </form>
 
-                @endforeach
+                @empty
+                    <tr>
+                        <input type="hidden" name="id" value="">
+                        <th scope="row">{{$x++}}</th>
+                        <td>NO HAY TAREAS</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+
+                @endforelse
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TABLA CON LAS SOLICITUDES PENDIENTES -->
+        <div>
+            <p class="h3">Solicitudes pedientes</p>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Aceptar</th>
+                    <th scope="col">Denegar</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                @forelse($peticionesPendientes as $proyecto)
+
+
+                        <tr>
+                            <input type="hidden" name="id" value="{{$proyecto->id}}">
+                            <th scope="row">{{$z++}}</th>
+                            <td>{{$proyecto->titulo}}</td>
+
+                            <form method="post" action="{{route("aceptarProyecto")}}">
+                                @csrf
+                                <input type="hidden" name="idProyecto" value="{{$proyecto->id}}">
+                                <td><input type="submit" class="btn btn-success" value="Aceptar"></td>
+                            </form>
+
+                            <form method="post" action="{{route("rechazarProyecto")}}">
+                                @csrf
+                                <input type="hidden" name="idProyecto" value="{{$proyecto->id}}">
+                                <td><input type="submit" class="btn btn-danger" value="Rechazar"></td>
+                            </form>
+                        </tr>
+
+                @empty
+                    <tr>
+                        <input type="hidden" name="id" value="">
+                        <th scope="row">{{$z++}}</th>
+                        <td>NO HAY TAREAS</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+
+                @endforelse
 
                 </tbody>
             </table>

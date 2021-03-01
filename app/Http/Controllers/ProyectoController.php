@@ -7,8 +7,10 @@ use App\Models\Mensaje;
 use App\Models\Proyecto;
 
 use App\Models\User;
+use App\Models\usuarios_proyectos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProyectoController extends Controller
 {
@@ -25,10 +27,25 @@ class ProyectoController extends Controller
             return redirect("/");
         }
 
-        $listaProyectos = Proyecto::get()->where("usuario_id", $usuario["id"]);
+
+        $peticionesPendientes = usuarios_proyectos::get()->where("usuario_id", $usuario->id)->where("estado", "0");
+        $listaPeticiones = array();
+
+        foreach ($peticionesPendientes as $peticion){
+            array_push($listaPeticiones, Proyecto::get()->where("id", $peticion->proyecto_id)->first());
+        }
+
+        $usuariosProyectos = usuarios_proyectos::get()->where("usuario_id", $usuario->id)->where("estado", "1");
+        $listaProyectos = array();
+
+
+        foreach ($usuariosProyectos as $usuarioProyecto){
+            array_push($listaProyectos, Proyecto::get()->where("id", $usuarioProyecto->proyecto_id)->first());
+        }
+
 
         //"usuario" => $usuario
-        return view("home", ["listaProyectos" => $listaProyectos, "x" => 1]);
+        return view("home", ["listaProyectos" => $listaProyectos, "x" => 1, "z" => 1, "peticionesPendientes" => $listaPeticiones]);
     }
 
     /**
@@ -59,6 +76,15 @@ class ProyectoController extends Controller
         ]);
 
         $proyecto->save();
+
+        $proyectoCreado = Proyecto::get()->where('titulo',request('titulo'))->where('usuario_id',$usuario["id"])->first();
+
+        usuarios_proyectos::Create([
+            'usuario_id'=>Auth::user()->id,
+            'proyecto_id'=>$proyectoCreado->id,
+            'estado' => 1,
+        ]);
+
 
         return redirect()->route("home");
     }
@@ -144,5 +170,20 @@ class ProyectoController extends Controller
 
       return back();
 
+    }
+
+
+    public function aceptarProyecto(){
+        DB::table("usuarios_proyectos")->where("usuario_id", Auth::user()->id)->where("proyecto_id", request("idProyecto"))->update([
+            "estado" => 1
+        ]);
+
+        return redirect()->route("home");
+    }
+
+    public function rechazarProyecto(){
+        DB::table("usuarios_proyectos")->where("usuario_id", Auth::user()->id)->where("proyecto_id", request("idProyecto"))->delete();
+
+        return redirect()->route("home");
     }
 }

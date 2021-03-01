@@ -1,5 +1,5 @@
 <head>
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="icon" type="/image/png" href="/images/logo.png">
     <link href="/css/styles.css" rel="stylesheet"/>
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
           crossorigin="anonymous"/>
@@ -21,7 +21,7 @@
     <div>
 
 
-        <a class="" href="#" data-toggle="modal" data-target="#perfil">
+        <a class="text-dark" href="#" data-toggle="modal" data-target="#perfil">
             <img style="max-height: 40px" src="/images/userDefault.png">
 
         </a>
@@ -36,6 +36,7 @@
 
 <div>
 
+    <!-- Modal -->
     <!-- Modal -->
     <div class="modal fade" id="perfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -54,31 +55,33 @@
 
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Nombre</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre" value="{{Auth::user()["nombre"]}}" disabled>
+                            <input type="text" class="form-control" id="ipNombre" name="nombre" value="{{Auth::user()["nombre"]}}" readonly>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlInput2">Apellidos</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput2" name="apellidos" value="{{Auth::user()["apellidos"]}}" disabled>
+                            <label for="exampleFormControlInput1">Apellidos</label>
+                            <input type="text" class="form-control" id="ipApellidos" name="apellidos" value="{{Auth::user()["apellidos"]}}" readonly>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlInput3">Email</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput3" name="email" value="{{Auth::user()["email"]}}" disabled>
+                            <label for="exampleFormControlInput1">Email</label>
+                            <input type="email" class="form-control" id="ipEmail" name="email" value="{{Auth::user()["email"]}}" readonly>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlInput4">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleFormControlInput4" name="password" placeholder="*********" disabled>
+                            <label for="exampleFormControlInput1">Contraseña</label>
+                            <input type="password" class="form-control" id="ipPass" name="password" placeholder="*********" readonly>
                         </div>
 
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="document.location.href = '/'">Cerrar sesión</button>
-                        <input type="submit" value="Editar" class="btn btn-dark">
+                        <button id="btCerrarSesion" type="button" class="btn btn-secondary" data-dismiss="modal" onclick="document.location.href = '/'">Cerrar sesión</button>
+                        <button id="btCancelar" type="button" class="btn btn-secondary" onclick="bloquear()" style="display: none">Cancelar</button>
+
+                        <button id="btEditar" type="button" class="btn btn-dark" onclick="desbloquear()">Editar</button>
+                        <input id="btAplicar" type="submit" value="Aplicar" class="btn btn-dark" style="display: none">
                     </div>
                 </form>
-
 
             </div>
         </div>
@@ -92,7 +95,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Menú</div>
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{route('abrirProyecto',$_COOKIE['idProyecto'])}}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-comments"></i>
                         </div>
@@ -106,7 +109,7 @@
                         Archivos
                     </a>
 
-                    <a class="nav-link" href="{{route("UsuariosProyectos")}}">
+                    <a class="nav-link" href="{{route('UsuariosProyectos')}}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-users-cog"></i>
                         </div>
@@ -119,7 +122,7 @@
                         </div>
                         Estadísticas
                     </a>
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{route('mostrarTareas')}}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-briefcase"></i>
                         </div>
