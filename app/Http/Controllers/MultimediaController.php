@@ -21,6 +21,7 @@ class MultimediaController extends Controller
 
 
         return view('archivos')->with('proyecto',$proyecto)->with('listaArchivos',$listaArchivos);
+
     }
     public function store($id){
         request()->validate(['archivo'=>'']);
@@ -38,6 +39,7 @@ class MultimediaController extends Controller
                 'usuario_id'=>Auth::user()->id,
                 'proyecto_id'=>$id
             ]);
+
         }
         return $this->index();
     }
