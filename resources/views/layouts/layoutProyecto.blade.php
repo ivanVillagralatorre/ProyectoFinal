@@ -18,17 +18,22 @@
 
         <div>
 
-            <a class="text-dark" href="#" data-toggle="modal" data-target="#perfil">
-                <img style="max-height: 40px" src="/images/userDefault.png">
 
-            </a>
-            <button class="btn  btn-link btn-sm " id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
-            </button>
-        </div>
+<nav class=" sb-topnav navbar navbar-expand navbar-dark bg-dark d-flex justify-content-between">
+    <a class="navbar-brand" href="/home">
+        <img style="max-height: 40px" src="/images/logo.png">
+    </a>
 
-    </nav>
 
-    <!--PERFIL-->
+    <div class="d-flex flex-nowrap">
+        <a class="navbar-brand d-flex" href="#" data-toggle="modal" data-target="#perfil">
+            <label class="mr-2 d-none d-md-block">Hola, {{Auth::user()["nombre"]}}</label>
+            <img style="max-height: 40px" src="/images/userDefault.png">
+        </a>
+        <button class="btn  btn-link btn-sm " id="sidebarToggle" href="#">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
 
     <div>
 
