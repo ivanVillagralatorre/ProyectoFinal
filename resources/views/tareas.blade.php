@@ -1,9 +1,12 @@
 @extends('layouts.layoutProyecto')
 
 @section('content')
+    <head>
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+    </head>
   <main class="d-flex flex-column p-4 w-100">
-      <div class="mb-3  d-flex justify-content-center">
-          <button type="button" class="btn text-uppercase btnEnviar btn-dark" data-toggle="modal" data-target="#exampleModal">
+      <div class="mb-3  d-flex justify-content-start justify-content-md-center w-100">
+          <button type="button" class="btn text-uppercase w-25  justify-content-start btnEnviar btn-dark" data-toggle="modal" data-target="#exampleModal">
               Crear Tarea
           </button>
 
@@ -64,7 +67,7 @@
                           <div class="w-50">
                               @if($tarea->estado==0)
                                   <div class="">
-                                      <p><strong>Estado</strong>:<strong class="text-success">En procesp</strong></p>
+                                      <p><strong>Estado</strong>:<strong class="text-success">En proceso</strong></p>
                                   </div>
 
                               @else
@@ -152,20 +155,22 @@
                                               </div>
 
 
-                                              <form  method="post" action="{{route('addPtarea')}}">
-                                                  @csrf
                                                   <div class="modal-body">
                                                       <!--FORMULARIO PARA LA CREACIÓN DE PROYECTOS-->
                                                       <div class="form-group d-flex">
-                                                          <input type="hidden" value="{{$tarea->id}}" name="idT">
-                                                          <input type="email" name="email" class="form-control"  placeholder="antonio@siwo.com">
-                                                          <input type="submit" class="btn btn-dark ml-2" value="Añadir">
+                                                          <input type="hidden" id="pt}" value="{{$tarea->id}}" name="idTarea">
+                                                          <select id="select{{$tarea->id}}" name="idUsuario" class="w-75 select">
+                                                              @foreach($participantesProyecto as $p)
+                                                                  <option value="{{$p->dt['id']}}">{{$p->dt['name']}}</option>
+
+                                                              @endforeach
+                                                          </select>
+                                                          <button  class="btn btn-dark ml-2"  onclick="comprobarName()"  value="{{$tarea->id}}">Añadir</button>
                                                       </div>
                                                   </div>
                                                   <div class="modal-footer">
                                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                   </div>
-                                              </form>
 
                                           </div>
                                       </div>
@@ -192,6 +197,9 @@
 
                   </div>
               </div>
+
+
+
             @else
           <div class="accordion-item tstyle   rounded" style="background: lightgreen" id="tarea{{$tarea->id}}">
           <h2 class="accordion-header" >
@@ -275,7 +283,7 @@
                       <!-- Button trigger modal -->
                       @if(auth()->user()->id==$tarea->datosAutor['id'])
 
-                          <button type="button"  class="btn w-75 btn-dark" data-toggle="modal" data-target="#modal{{$tarea->id}}">
+                          <button type="button"  class="btn w-75 btn-dark d-none" data-toggle="modal" data-target="#modal{{$tarea->id}}">
                               Añadir
                           </button>
 
@@ -293,20 +301,18 @@
                                   </div>
 
 
-                                  <form  method="post" action="{{route('addPtarea')}}">
-                                      @csrf
+
                                       <div class="modal-body">
                                           <!--FORMULARIO PARA LA CREACIÓN DE PROYECTOS-->
-                                          <div class="form-group d-flex">
+                                          <div class="form-group   d-flex">
                                               <input type="hidden" value="{{$tarea->id}}" name="idT">
                                               <input type="email" name="email" class="form-control"  placeholder="antonio@siwo.com">
-                                              <input type="submit" class="btn btn-dark ml-2" value="Añadir">
+                                              <button  class="btn btn-dark ml-2" onclick="comprobarName()"  value="Añadir"></button>
                                           </div>
                                       </div>
                                       <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                       </div>
-                                  </form>
 
                               </div>
                           </div>
@@ -330,9 +336,9 @@
           </div>
            @endif
 
-      @empty
+             @empty
 
-          <h1 class="text-center text-uppercase">No hay tareas</h1>
+
 
 
           @endforelse
@@ -347,5 +353,6 @@
       </div>
 
   </main>
+
 @endsection
 
